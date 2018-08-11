@@ -12,8 +12,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//changed the class name from library to Library by Malinga
 @SuppressWarnings("serial")
-public class library implements Serializable {
+public class Library implements Serializable { 
 	
 	private static final String LIBRARY_FILE = "library.obj";
 	private static final int LOAN_LIMIT = 2;
