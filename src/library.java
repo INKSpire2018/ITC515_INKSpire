@@ -14,7 +14,7 @@ import java.util.Map;
 
 //changed the class name from library to Library by Malinga
 @SuppressWarnings("serial")
-public class Library implements Serializable { 
+public class Library implements Serializable {
 	
 	private static final String LIBRARY_FILE = "library.obj";
 	private static final int LOAN_LIMIT = 2;
@@ -23,10 +23,19 @@ public class Library implements Serializable {
 	private static final double MAX_FINES_OWED = 5.0;
 	private static final double DAMAGE_FEE = 2.0;
 	
-	private static library self;
-	private int BID;
-	private int MID;
-	private int LID;
+	/*
+	changed the variable type from library to Library by Malinga
+	changed the Library variable name self to libraryInstance
+	by Malinga
+	*/
+	private static Library libraryInstance;
+
+	//changed the variable name BID to bookId by Malinga
+	private int bookId;
+	//changed the variable name MID to memberId by Malinga
+	private int memberId;
+	//changed the variable name LID to loanId by Malinga
+	private int loanId;
 	private Date loadDate;
 	
 	private Map<Integer, book> catalog;
@@ -36,45 +45,69 @@ public class Library implements Serializable {
 	private Map<Integer, book> damagedBooks;
 	
 
-	private library() {
+	//changed the constructor from library to Library by Malinga
+	private Library() {
 		catalog = new HashMap<>();
 		members = new HashMap<>();
 		loans = new HashMap<>();
 		currentLoans = new HashMap<>();
 		damagedBooks = new HashMap<>();
-		BID = 1;
-		MID = 1;		
-		LID = 1;		
+		//changed the variable name BID to bookId by Malinga
+		bookId = 1;
+		//changed the variable name MID to memberId by Malinga
+		memberId = 1;
+		//changed the variable name LID to loanId by Malinga		
+		loanId = 1;		
 	}
 
-	
-	public static synchronized library INSTANCE() {		
-		if (self == null) {
+	/*
+	changed the type from library to Library
+	changed the method name from INSTANCE to getLibraryInstance
+	by Malinga
+	*/
+	public static synchronized Library getLibraryInstance() {	
+		//changed the variable self to libraryInstance by Malinga	
+		if (libraryInstance == null) {
 			Path path = Paths.get(LIBRARY_FILE);			
 			if (Files.exists(path)) {	
-				try (ObjectInputStream lof = new ObjectInputStream(new FileInputStream(LIBRARY_FILE));) {
-			    
-					self = (library) lof.readObject();
-					Calendar.getInstance().setDate(self.loadDate);
-					lof.close();
+				//changed the variable lof to objectInputStream by Malinga
+				try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(LIBRARY_FILE));) {
+			    	//changed the variable self to libraryInstance by Malinga
+					libraryInstance = (library) objectInputStream.readObject();
+					//changed the variable self to libraryInstance by Malinga
+					Calendar.getInstance().setDate(libraryInstance.loadDate);
+					//changed the variable lof to objectInputStream by Malinga
+					objectInputStream.close();
 				}
 				catch (Exception e) {
 					throw new RuntimeException(e);
 				}
 			}
-			else self = new library();
+			/*
+			changed the variable self to libraryInstance 
+			changed the constructor library to Library
+			added paranthesis to the else statement
+			by Malinga
+			*/
+			else {
+				libraryInstance = new Library();
+			}
 		}
-		return self;
+		//changed the variable self to libraryInstance by Malinga
+		return libraryInstance;
 	}
 
-	
-	public static synchronized void SAVE() {
-		if (self != null) {
-			self.loadDate = Calendar.getInstance().Date();
-			try (ObjectOutputStream lof = new ObjectOutputStream(new FileOutputStream(LIBRARY_FILE));) {
-				lof.writeObject(self);
-				lof.flush();
-				lof.close();	
+	//changed the method name SAVE to saveLibraryInstance by Malinga
+	public static synchronized void saveLibraryInstance() {
+		//changed the variable self to libraryInstance by Malinga
+		if (libraryInstance != null) {
+			libraryInstance.loadDate = Calendar.getInstance().Date();
+
+			//changed the variable lof to objectOutputStream by Malinga
+			try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(LIBRARY_FILE));) {
+				objectOutputStream.writeObject(libraryInstance);
+				objectOutputStream.flush();
+				objectOutputStream.close();	
 			}
 			catch (Exception e) {
 				throw new RuntimeException(e);
@@ -82,90 +115,133 @@ public class Library implements Serializable {
 		}
 	}
 
-	
-	public int BookID() {
-		return BID;
+	/*
+	Changed the method name BookID to getBookId
+	Changed the variable BID to bookId
+	by Malinga
+	*/
+	public int getBookId() {
+		return bookId;
 	}
 	
-	
-	public int MemberID() {
-		return MID;
+	/*
+	Changed the method name MemberID to getMemberId
+	Changed the variable MID to memberId
+	by Malinga
+	*/
+	public int getMemberId() {
+		return memberId;
 	}
 	
-	
-	private int nextBID() {
-		return BID++;
+	/*
+	Changed the method name nextBID to getNextBookId
+	Changed the variable BID to bookId
+	by Malinga
+	*/
+	private int getNextBookId() {
+		return bookId++;
 	}
 
-	
-	private int nextMID() {
-		return MID++;
+	/*
+	Changed the method name nextMID to getNextMemberId
+	Changed the variable MID to memberId
+	by Malinga
+	*/
+	private int getNextMemberId() {
+		return memberId++;
 	}
 
-	
-	private int nextLID() {
-		return LID++;
+	/*
+	Changed the method name nextLID to getNextLoanId
+	Changed the variable LID to loanId
+	by Malinga
+	*/
+	private int getNextLoanId() {
+		return loanId++;
 	}
 
-	
-	public List<member> Members() {		
+	//Changed the method name Members to getMembersList
+	public List<member> getMembersList() {		
 		return new ArrayList<member>(members.values()); 
 	}
 
-
-	public List<book> Books() {		
+	//Changed the method name Books to getBooksList
+	public List<book> getBooksList() {		
 		return new ArrayList<book>(catalog.values()); 
 	}
 
-
-	public List<loan> CurrentLoans() {
+	//Changed the method name CurrentLoans to getCurrentLoansList
+	public List<loan> getCurrentLoansList() {
 		return new ArrayList<loan>(currentLoans.values());
 	}
 
-
-	public member Add_mem(String lastName, String firstName, String email, int phoneNo) {		
-		member member = new member(lastName, firstName, email, phoneNo, nextMID());
+	/*
+	Changed the method name Add_mem to addNewMember
+	Changed the method name nextMID to getNextMemberId
+	by Malinga
+	*/
+	public member addNewMember(String lastName, String firstName, String email, int phoneNo) {		
+		member member = new member(lastName, firstName, email, phoneNo, getNextMemberId());
 		members.put(member.getId(), member);		
 		return member;
 	}
 
-	
-	public book Add_book(String a, String t, String c) {		
-		book b = new book(a, t, c, nextBID());
-		catalog.put(b.ID(), b);		
-		return b;
+	/*
+	Changed the method name Add_book to addNewBook
+	Changed the method name nextBID to getNextBookId
+	Changed the parameter variable a to author, t to title, c to callNo and b to book
+	by Malinga
+	*/
+	public book addNewBook(String author, String title, String callNo) {		
+		book book = new book(author, title, callNo, getNextBookId());
+		catalog.put(book.ID(), book);		
+		return book;
 	}
 
-	
+	//Added paranthesis to the if statement by Malinga
 	public member getMember(int memberId) {
-		if (members.containsKey(memberId)) 
+		if (members.containsKey(memberId)) {
 			return members.get(memberId);
+		}
 		return null;
 	}
 
-	
-	public book Book(int bookId) {
-		if (catalog.containsKey(bookId)) 
+	/*
+	Added paranthesis to the if statement
+	Change the method name Book to getBook
+	by Malinga
+	*/
+	public book getBook(int bookId) {
+		if (catalog.containsKey(bookId)) {
 			return catalog.get(bookId);		
+		}
 		return null;
 	}
 
-	
-	public int loanLimit() {
+	//Changed the method name loanLimit to getLoanLimit
+	public int getLoanLimit() {
 		return LOAN_LIMIT;
 	}
 
-	
-	public boolean memberCanBorrow(member member) {		
-		if (member.getNumberOfCurrentLoans() == LOAN_LIMIT ) 
+	/*
+	Added paranthesis to the if statements and for loop
+	Change the method name memberCanBorrow to canMemberBorrowBooks
+	by Malinga
+	*/
+	public boolean canMemberBorrowBooks(member member) {		
+		if (member.getNumberOfCurrentLoans() == LOAN_LIMIT ) {
 			return false;
+		}
 				
-		if (member.getFinesOwed() >= MAX_FINES_OWED) 
+		if (member.getFinesOwed() >= MAX_FINES_OWED) {
 			return false;
+		}
 				
-		for (loan loan : member.getLoans()) 
-			if (loan.isOverDue()) 
+		for (loan loan : member.getLoans()) {
+			if (loan.isOverDue()) {
 				return false;
+			}
+		}
 			
 		return true;
 	}
