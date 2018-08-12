@@ -24,7 +24,7 @@ public class Library implements Serializable {
 	private static final double DAMAGE_FEE = 2.0;
 	
 	/*
-	changed the variable type from library to Library by Malinga
+	changed the variable type from library to Library
 	changed the Library variable name self to libraryInstance
 	by Malinga
 	*/
@@ -60,6 +60,7 @@ public class Library implements Serializable {
 		loanId = 1;		
 	}
 
+
 	/*
 	changed the type from library to Library
 	changed the method name from INSTANCE to getLibraryInstance
@@ -71,12 +72,17 @@ public class Library implements Serializable {
 			Path path = Paths.get(LIBRARY_FILE);			
 			if (Files.exists(path)) {	
 				//changed the variable lof to objectInputStream by Malinga
-				try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(LIBRARY_FILE));) {
+				try (
+					//no method calls within argument lists of any method calls - by Malinga
+					FileInputStream fileInputStream = new FileInputStream(LIBRARY_FILE);
+					ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+					) {
 			    	//changed the variable self to libraryInstance by Malinga
 					libraryInstance = (library) objectInputStream.readObject();
 					//changed the variable self to libraryInstance by Malinga
 					Calendar.getInstance().setDate(libraryInstance.loadDate);
 					//changed the variable lof to objectInputStream by Malinga
+					//below statement is not needed with try-with-resource statement
 					objectInputStream.close();
 				}
 				catch (Exception e) {
@@ -86,7 +92,7 @@ public class Library implements Serializable {
 			/*
 			changed the variable self to libraryInstance 
 			changed the constructor library to Library
-			added paranthesis to the else statement
+			added parentheses to the else statement
 			by Malinga
 			*/
 			else {
@@ -97,16 +103,25 @@ public class Library implements Serializable {
 		return libraryInstance;
 	}
 
+
 	//changed the method name SAVE to saveLibraryInstance by Malinga
 	public static synchronized void saveLibraryInstance() {
 		//changed the variable self to libraryInstance by Malinga
 		if (libraryInstance != null) {
 			libraryInstance.loadDate = Calendar.getInstance().Date();
 
-			//changed the variable lof to objectOutputStream by Malinga
-			try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(LIBRARY_FILE));) {
+			//changed the variable lof to objectOutputStream by Malinga			
+			try (
+				//no method calls within argument lists of any method calls - by Malinga
+				FileOutputStream fileOutputStream = new FileOutputStream(LIBRARY_FILE);
+				ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+				) {
+				//changed the variable lof to objectOutputStream by Malinga
 				objectOutputStream.writeObject(libraryInstance);
+				//changed the variable lof to objectOutputStream by Malinga
 				objectOutputStream.flush();
+				//changed the variable lof to objectOutputStream by Malinga
+				//below statement is not needed with try-with-resource statement
 				objectOutputStream.close();	
 			}
 			catch (Exception e) {
@@ -115,103 +130,96 @@ public class Library implements Serializable {
 		}
 	}
 
-	/*
-	Changed the method name BookID to getBookId
-	Changed the variable BID to bookId
-	by Malinga
-	*/
+	
+	//Changed the method name BookID to getBookId by Malinga
 	public int getBookId() {
+		//Changed the variable BID to bookId by Malinga
 		return bookId;
 	}
 	
-	/*
-	Changed the method name MemberID to getMemberId
-	Changed the variable MID to memberId
-	by Malinga
-	*/
+	
+	//Changed the method name MemberID to getMemberId by Malinga
 	public int getMemberId() {
+		//Changed the variable MID to memberId by Malinga
 		return memberId;
 	}
 	
-	/*
-	Changed the method name nextBID to getNextBookId
-	Changed the variable BID to bookId
-	by Malinga
-	*/
+	
+	//Changed the method name nextBID to getNextBookId
 	private int getNextBookId() {
+		//Changed the variable BID to bookId by Malinga
 		return bookId++;
 	}
 
-	/*
-	Changed the method name nextMID to getNextMemberId
-	Changed the variable MID to memberId
-	by Malinga
-	*/
+	
+	//Changed the method name nextMID to getNextMemberId by Malinga
 	private int getNextMemberId() {
+		//Changed the variable MID to memberId by Malinga
 		return memberId++;
 	}
 
-	/*
-	Changed the method name nextLID to getNextLoanId
-	Changed the variable LID to loanId
-	by Malinga
-	*/
+	
+	//Changed the method name nextLID to getNextLoanId by Malinga	
 	private int getNextLoanId() {
+		//Changed the variable LID to loanId by Malinga
 		return loanId++;
 	}
+
 
 	//Changed the method name Members to getMembersList
 	public List<member> getMembersList() {		
 		return new ArrayList<member>(members.values()); 
 	}
 
+
 	//Changed the method name Books to getBooksList
 	public List<book> getBooksList() {		
 		return new ArrayList<book>(catalog.values()); 
 	}
+
 
 	//Changed the method name CurrentLoans to getCurrentLoansList
 	public List<loan> getCurrentLoansList() {
 		return new ArrayList<loan>(currentLoans.values());
 	}
 
-	/*
-	Changed the method name Add_mem to addNewMember
-	Changed the method name nextMID to getNextMemberId
-	by Malinga
-	*/
+
+	
+	//Changed the method name Add_mem to addNewMember by Malinga
 	public member addNewMember(String lastName, String firstName, String email, int phoneNo) {		
+		//Changed the method name nextMID to getNextMemberId by Malinga
 		member member = new member(lastName, firstName, email, phoneNo, getNextMemberId());
 		members.put(member.getId(), member);		
 		return member;
 	}
 
+
 	/*
-	Changed the method name Add_book to addNewBook
-	Changed the method name nextBID to getNextBookId
+	Changed the method name Add_book to addNewBook	
 	Changed the parameter variable a to author, t to title, c to callNo and b to book
 	by Malinga
 	*/
-	public book addNewBook(String author, String title, String callNo) {		
+	public book addNewBook(String author, String title, String callNo) {	
+		//Changed the method name nextBID to getNextBookId  by Malinga
 		book book = new book(author, title, callNo, getNextBookId());
 		catalog.put(book.ID(), book);		
 		return book;
 	}
 
-	//Added paranthesis to the if statement by Malinga
+	
+	//Change the method name Member to getMember by Malinga
 	public member getMember(int memberId) {
+		//Added parentheses to the if statement by Malinga
 		if (members.containsKey(memberId)) {
 			return members.get(memberId);
 		}
 		return null;
 	}
 
-	/*
-	Added paranthesis to the if statement
-	Change the method name Book to getBook
-	by Malinga
-	*/
+	
+	//Change the method name Book to getBook by Malinga	
 	public book getBook(int bookId) {
+		//Added parentheses to the if statement by Malinga
 		if (catalog.containsKey(bookId)) {
 			return catalog.get(bookId);		
 		}
@@ -223,20 +231,20 @@ public class Library implements Serializable {
 		return LOAN_LIMIT;
 	}
 
-	/*
-	Added paranthesis to the if statements and for loop
-	Change the method name memberCanBorrow to canMemberBorrowBooks
-	by Malinga
-	*/
-	public boolean canMemberBorrowBooks(member member) {		
+	//Changed the method name memberCanBorrow to canMemberBorrowBooks by Malinga
+	public boolean canMemberBorrowBooks(member member) {	
+
+		//Added parentheses to the if statement by Malinga
 		if (member.getNumberOfCurrentLoans() == LOAN_LIMIT ) {
 			return false;
 		}
-				
+
+		//Added parentheses to the if statements by Malinga
 		if (member.getFinesOwed() >= MAX_FINES_OWED) {
 			return false;
 		}
-				
+
+		//Added parentheses to the for loop by Malinga		
 		for (loan loan : member.getLoans()) {
 			if (loan.isOverDue()) {
 				return false;
@@ -246,8 +254,9 @@ public class Library implements Serializable {
 		return true;
 	}
 
-	
-	public int loansRemainingForMember(member member) {		
+
+	//Changed the method name loansRemainingForMember to getLoansRemainingForMember by Malinga
+	public int getLoansRemainingForMember(member member) {		
 		return LOAN_LIMIT - member.getNumberOfCurrentLoans();
 	}
 
@@ -273,7 +282,9 @@ public class Library implements Serializable {
 	
 	public double calculateOverDueFine(loan loan) {
 		if (loan.isOverDue()) {
-			long daysOverDue = Calendar.getInstance().getDaysDifference(loan.getDueDate());
+			//no method calls within argument lists of any method calls - by Malinga
+			Date dueDate = loan.getDueDate();
+			long daysOverDue = Calendar.getInstance().getDaysDifference(dueDate);
 			double fine = daysOverDue * FINE_PER_DAY;
 			return fine;
 		}
