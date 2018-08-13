@@ -1,3 +1,7 @@
+/*
+Import necessary libraries
+ */
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,111 +11,128 @@ import java.util.Map;
 @SuppressWarnings("serial")
 public class member implements Serializable {
 
-	private String LN;
-	private String FN;
-	private String EM;
-	private int PN;
-	private int ID;
-	private double FINES;
-	
-	private Map<Integer, loan> LNS;
+    //change LN -> lastName
+    private String lastName;
+    //FN->firstName
+    private String firstName;
+    //EM -> email
+    private String email;
+    //PN -> phone
+    private int phone;
+    //ID->id
+    private int id;
+    //FINES
+    private double fines;
+    //LNS -> loansList
+    private Map<Integer, loan> loansList;
 
-	
-	public member(String lastName, String firstName, String email, int phoneNo, int id) {
-		this.LN = lastName;
-		this.FN = firstName;
-		this.EM = email;
-		this.PN = phoneNo;
-		this.ID = id;
-		
-		this.LNS = new HashMap<>();
-	}
+    public member(String lastName, String firstName, String email, int phoneNo, int id) {
+        //LN->lastName
+        this.lastName = lastName;
+        //LN->firstName
+        this.firstName = firstName;
+        //EM->email
+        this.email = email;
+        //PN -> phone
+        this.phone = phoneNo;
+        //ID -> id
+        this.id = id;
 
-	
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("Member:  ").append(ID).append("\n")
-		  .append("  Name:  ").append(LN).append(", ").append(FN).append("\n")
-		  .append("  Email: ").append(EM).append("\n")
-		  .append("  Phone: ").append(PN)
-		  .append("\n")
-		  .append(String.format("  Fines Owed :  $%.2f", FINES))
-		  .append("\n");
-		
-		for (loan loan : LNS.values()) {
-			sb.append(loan).append("\n");
-		}		  
-		return sb.toString();
-	}
+        //LNS->loansList
+        this.loansList = new HashMap<>();
+    }
 
-	
-	public int getId() {
-		return ID;
-	}
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        //ID->id
+        sb.append("Member:  ").append(id).append("\n")
+            //LN->lastName
+            .append("  Name:  ").append(lastName).append(", ").append(firstName).append("\n")
+            //EM->email
+            .append("  Email: ").append(email).append("\n")
+            //PN->phone
+            .append("  Phone: ").append(phone)
+            .append("\n")
+            //FINES->fines
+            .append(String.format("  Fines Owed :  $%.2f", fines))
+            .append("\n");
 
-	
-	public List<loan> getLoans() {
-		return new ArrayList<loan>(LNS.values());
-	}
+        //LNS ->loansList
+        for (loan loan : loansList.values()) {
+            sb.append(loan).append("\n");
+        }
+        return sb.toString();
+    }
 
-	
-	public int getNumberOfCurrentLoans() {
-		return LNS.size();
-	}
+    public int getId() {
+        //ID->id
+        return id;
+    }
 
-	
-	public double getFinesOwed() {
-		return FINES;
-	}
+    public List<loan> getLoans() {
+        //LNS->loansList
+        return new ArrayList<loan>(loansList.values());
+    }
 
-	
-	public void takeOutLoan(loan loan) {
-		if (!LNS.containsKey(loan.getId())) {
-			LNS.put(loan.getId(), loan);
-		}
-		else {
-			throw new RuntimeException("Duplicate loan added to member");
-		}		
-	}
+    public int getNumberOfCurrentLoans() {
+        //LNS->loansList
+        return loansList.size();
+    }
 
-	
-	public String getLastName() {
-		return LN;
-	}
+    public double getFinesOwed() {
+        //FINES->fines
+        return fines;
+    }
 
-	
-	public String getFirstName() {
-		return FN;
-	}
+    public void takeOutLoan(loan loan) {
+        //LNS->loansList
+        if (!loansList.containsKey(loan.getId())) {
+            loansList.put(loan.getId(), loan);
+        } else {
+            throw new RuntimeException("Duplicate loan added to member");
+        }
+    }
 
+    public String getLastName() {
+        //LN->lastName
+        return lastName;
+    }
 
-	public void addFine(double fine) {
-		FINES += fine;
-	}
-	
-	public double payFine(double amount) {
-		if (amount < 0) {
-			throw new RuntimeException("Member.payFine: amount must be positive");
-		}
-		double change = 0;
-		if (amount > FINES) {
-			change = amount - FINES;
-			FINES = 0;
-		}
-		else {
-			FINES -= amount;
-		}
-		return change;
-	}
+    public String getFirstName() {
+        //FN -> firstName
+        return firstName;
+    }
 
+    public void addFine(double fine) {
+        //FINES->fines
+        fines += fine;
+    }
 
-	public void dischargeLoan(loan loan) {
-		if (LNS.containsKey(loan.getId())) {
-			LNS.remove(loan.getId());
-		}
-		else {
-			throw new RuntimeException("No such loan held by member");
-		}		
-	}
+    public double payFine(double amount) {
+        if (amount < 0) {
+            throw new RuntimeException("Member.payFine: amount must be positive");
+        }
+        double change = 0;
+        //FINES->fines
+        if (amount > fines) {
+            //FINES->fines
+            change = amount - fines;
+            //FINES->fines
+            fines = 0;
+        } else {
+            //FINES->fines
+            fines -= amount;
+        }
+        return change;
+    }
+
+    public void dischargeLoan(loan loan) {
+        //LNS->loansList
+        if (loansList.containsKey(loan.getId())) {
+            loansList.remove(loan.getId());
+        } else {
+            throw new RuntimeException("No such loan held by member");
+        }
+    }
 
 }
