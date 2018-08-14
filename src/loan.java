@@ -2,37 +2,24 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-//changed the class name from loan to Loan by Malinga
 @SuppressWarnings("serial")
-public class Loan implements Serializable {
+public class loan implements Serializable {
 	
-	//changed the enum name from LOAN_STATE to LoanState by Malinga
-	public static enum LoanState { CURRENT, OVER_DUE, DISCHARGED };
+	public static enum LOAN_STATE { CURRENT, OVER_DUE, DISCHARGED };
 	
-	//changed the variable name ID to id by Malinga
-	private int id;
-	//changed the variable name B to book by Malinga
-	private book book;
-	//changed the variable name M to member by Malinga
-	private member member;
-	//changed the variable name D to date by Malinga
-	private Date date;
-	//changed the variable type LOAN_STATE to LoanState by Malinga
+	private int ID;
+	private book B;
+	private member M;
+	private Date D;
 	private LOAN_STATE state;
 
 	
-	//changed the constructor name from loan to Loan by Malinga
-	public Loan(int loanId, book book, member member, Date dueDate) {
-		//changed the variable name ID to id by Malinga
-		this.id = loanId;
-		//changed the variable name B to book by Malinga
-		this.book = book;
-		//changed the variable name M to member by Malinga
-		this.member = member;
-		//changed the variable name D to date by Malinga
-		this.date = dueDate;
-		//changed the variable type LOAN_STATE to LoanState by Malinga
-		this.state = LoanState.CURRENT;
+	public loan(int loanId, book book, member member, Date dueDate) {
+		this.ID = loanId;
+		this.B = book;
+		this.M = member;
+		this.D = dueDate;
+		this.state = LOAN_STATE.CURRENT;
 	}
 
 	
