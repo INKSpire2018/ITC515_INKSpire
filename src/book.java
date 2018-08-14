@@ -19,10 +19,14 @@ public class book implements Serializable {
 	
 	
 	public book(String author, String title, String callNo, int id) {
-		this.A = author;
-		this.T = title;
-		this.C = callNo;
-		this.ID = id;
+		//correct variable name changed 
+		this.athours = author;
+		//correct variable name changed 
+		this.titles = title;
+		//correct variable name changed 
+		this.callNos= callNo;
+		//correct variable name changed 
+		this.ids = id;
 		this.state = STATE.AVAILABLE;
 	}
 	
