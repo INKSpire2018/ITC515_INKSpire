@@ -5,48 +5,56 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class book implements Serializable {
 	
-	private String titles;
+	private String title;
 	//meaning full variable --SW
-	private String athours;
+	private String athour;
 	//meaning full variable --SW
-	private String callNos;
+	private String callNo;
 	//meaning full variable --SW
-	private int ids;
+	private int id;
 	//meaning full variable --SW
-	
-	private enum STATE { AVAILABLE, ON_LOAN, DAMAGED, RESERVED };
-	private STATE state;
+	//Camelcase structure   --SW
+	private enum State { AVAILABLE, ON_LOAN, DAMAGED, RESERVED };
+	//chanage  the structure name
+	private State state;
 	
 	
 	public book(String author, String title, String callNo, int id) {
-		//correct variable name changed 
-		this.athours = author;
-		//correct variable name changed 
-		this.titles = title;
-		//correct variable name changed 
-		this.callNos= callNo;
-		//correct variable name changed 
-		this.ids = id;
-		this.state = STATE.AVAILABLE;
+		//correct variable name changed --SW
+		this.athour = author;
+		//correct variable name changed --SW
+		this. = title;
+		//correct variable name changed --SW
+		this.callNo= callNo;
+		//correct variable name changed --SW
+		this.id = id;
+		this.state = state .AVAILABLE;
 	}
 	
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("Book: ").append(ID).append("\n")
-		  .append("  Title:  ").append(T).append("\n")
-		  .append("  Author: ").append(A).append("\n")
-		  .append("  CallNo: ").append(C).append("\n")
-		  .append("  State:  ").append(state);
-		
-		return sb.toString();
+		//object name change --SW
+		StringBuilder stringBuilder = new StringButitlesilder();
+		//correct variable name changed --SW
+		sb.append("Book: ").append(id).append("\n")
+		//correct variable name changed --SW
+		    .append("  Title:  ").append(title).append("\n")
+		  //correct variable name changed --SW
+		    .append("  Author: ").append(athour).append("\n")
+		  //correct variable name changed --SW
+		    .append("  CallNo: ").append(callNo).append("\n")
+		  //correct variable name changed --SW
+		    .append("  State:  ").append(state);
+		//correct variable name changed --SW
+		//object name changed --SW
+		return stringBuilder.toString();
 	}
 
 	public Integer ID() {
-		return ID;
+		return id;
 	}
 
 	public String Title() {
-		return T;
+		return title;
 	}
 
 
