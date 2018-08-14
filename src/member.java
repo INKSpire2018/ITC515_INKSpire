@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.Map;
 
 @SuppressWarnings("serial")
-public class member implements Serializable {
+//chnaged class name to capital - Mihian
+public class Member implements Serializable {
 
     //change LN -> lastName
     private String lastName;
