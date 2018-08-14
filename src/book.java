@@ -50,33 +50,39 @@ public class book implements Serializable {
 	}
 
 	public Integer ID() {
+		//correct variable name changed --SW
 		return id;
 	}
 
 	public String Title() {
+		//correct variable name changed --SW
 		return title;
 	}
 
 
 	
 	public boolean Available() {
-		return state == STATE.AVAILABLE;
+		//correct variable name changed --SW
+		return state == state.AVAILABLE;
 	}
 
 	
 	public boolean On_loan() {
-		return state == STATE.ON_LOAN;
+		//correct variable name changed --SW
+		return state == state.ON_LOAN;
 	}
 
 	
 	public boolean Damaged() {
-		return state == STATE.DAMAGED;
+		//correct variable name changed --SW
+		return state == state.DAMAGED;
 	}
 
 	
 	public void Borrow() {
-		if (state.equals(STATE.AVAILABLE)) {
-			state = STATE.ON_LOAN;
+			//correct variable name changed --SW
+		if (state.equals(state.AVAILABLE)) {
+			state = state.ON_LOAN;
 		}
 		else {
 			throw new RuntimeException(String.format("Book: cannot borrow while book is in state: %s", state));
@@ -86,23 +92,28 @@ public class book implements Serializable {
 
 
 	public void Return(boolean DAMAGED) {
-		if (state.equals(STATE.ON_LOAN)) {
+			//correct variable name changed --SW
+		if (state.equals(state.ON_LOAN)) {
 			if (DAMAGED) {
-				state = STATE.DAMAGED;
+			//correct variable name changed --SW
+				state = state.DAMAGED;
 			}
 			else {
-				state = STATE.AVAILABLE;
+			//correct variable name changed --SW
+				state = state.AVAILABLE;
 			}
 		}
 		else {
+			//correct variable name changed --SW
 			throw new RuntimeException(String.format("Book: cannot Return while book is in state: %s", state));
 		}		
 	}
 
 	
 	public void Repair() {
-		if (state.equals(STATE.DAMAGED)) {
-			state = STATE.AVAILABLE;
+		 //correct variable name changed --SW
+		if (state.equals(state.DAMAGED)) {
+			state = state.AVAILABLE;
 		}
 		else {
 			throw new RuntimeException(String.format("Book: cannot repair while book is in state: %s", state));
