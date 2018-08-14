@@ -63,10 +63,10 @@ public class Library implements Serializable {
 
 	/*
 	changed the type from library to Library
-	changed the method name from INSTANCE to getLibraryInstance
+	changed the method name from INSTANCE to getInstance
 	by Malinga
 	*/
-	public static synchronized Library getLibraryInstance() {	
+	public static synchronized Library getInstance() {	
 		//changed the variable self to libraryInstance by Malinga	
 		if (libraryInstance == null) {
 			Path path = Paths.get(LIBRARY_FILE);			
@@ -104,8 +104,8 @@ public class Library implements Serializable {
 	}
 
 
-	//changed the method name SAVE to saveLibraryInstance by Malinga
-	public static synchronized void saveLibraryInstance() {
+	//changed the method name SAVE to save by Malinga
+	public static synchronized void save() {
 		//changed the variable self to libraryInstance by Malinga
 		if (libraryInstance != null) {
 			libraryInstance.loadDate = Calendar.getInstance().Date();
