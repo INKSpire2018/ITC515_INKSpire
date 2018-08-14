@@ -43,6 +43,7 @@ public class Member implements Serializable {
         this.loansList = new HashMap<>();
     }
 
+	//override toString method
     public String toString() {
         StringBuilder sb = new StringBuilder();
         //ID->id
