@@ -5,10 +5,14 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class book implements Serializable {
 	
-	private String T;
-	private String A;
-	private String C;
-	private int ID;
+	private String titles;
+	//meaning full variable --SW
+	private String athours;
+	//meaning full variable --SW
+	private String callNos;
+	//meaning full variable --SW
+	private int ids;
+	//meaning full variable --SW
 	
 	private enum STATE { AVAILABLE, ON_LOAN, DAMAGED, RESERVED };
 	private STATE state;
