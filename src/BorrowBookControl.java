@@ -2,31 +2,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BorrowBookControl {
+	//meaning full variable --SW
+	private BorrowBookUI bookuserinterface
+	//meaning full variable --SW
+	private library library;
+    //meaning full variable --SW
+	private member member;
 	
-	private BorrowBookUI ui;
-	
-	private library L;
-	private member M;
 	private enum CONTROL_STATE { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };
 	private CONTROL_STATE state;
 	
 	private List<book> PENDING;
 	private List<loan> COMPLETED;
-	private book B;
+	//meaning full variable --SW
+	private book book;
 	
 	
 	public BorrowBookControl() {
-		this.L = L.INSTANCE();
+		//correct variable name changed --SW
+		this. library= library.INSTANCE();
 		state = CONTROL_STATE.INITIALISED;
 	}
 	
 
-	public void setUI(BorrowBookUI ui) {
+	public void setUI(BorrowBookUI bookuserinterface) {
 		if (!state.equals(CONTROL_STATE.INITIALISED)) 
 			throw new RuntimeException("BorrowBookControl: cannot call setUI except in INITIALISED state");
-			
-		this.ui = ui;
-		ui.setState(BorrowBookUI.UI_STATE.READY);
+		//correct variable name changed --SW
+		this.bookuserinterface = bookuserinterface;
+		bookuserinterface.setState(BorrowBookUI.UI_STATE.READY);
 		state = CONTROL_STATE.READY;		
 	}
 
@@ -42,26 +46,31 @@ public class BorrowBookControl {
 		}
 		if (L.memberCanBorrow(M)) {
 			PENDING = new ArrayList<>();
-			ui.setState(BorrowBookUI.UI_STATE.SCANNING);
+			//correct variable name changed --SW
+			bookuserinterface.setState(BorrowBookUI.UI_STATE.SCANNING);
 			state = CONTROL_STATE.SCANNING; }
 		else 
-		{
-			ui.display("Member cannot borrow at this time");
-			ui.setState(BorrowBookUI.UI_STATE.RESTRICTED); }}
+		{   //correct variable name changed --SW
+			bookuserinterface.display("Member cannot borrow at this time");
+			//correct variable name changed --SW
+			bookuserinterface.setState(BorrowBookUI.UI_STATE.RESTRICTED); }}
 	
 	
 	public void Scanned(int bookId) {
-		B = null;
+		//correct variable name changed --SW
+		book = null;
 		if (!state.equals(CONTROL_STATE.SCANNING)) {
 			throw new RuntimeException("BorrowBookControl: cannot call bookScanned except in SCANNING state");
-		}	
-		B = L.Book(bookId);
-		if (B == null) {
-			ui.display("Invalid bookId");
+		}
+       //correct variable name changed --SW		
+		book = library.Book(bookId);
+	   //correct variable name changed --SW	
+		if (book == null) {
+			bookuserinterface.display("Invalid bookId");
 			return;
 		}
-		if (!B.Available()) {
-			ui.display("Book cannot be borrowed");
+		if (!book.Available()) {
+			bookuserinterface.display("Book cannot be borrowed");
 			return;
 		}
 		PENDING.add(B);
