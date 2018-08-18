@@ -79,7 +79,7 @@ public class BorrowBookControl {
 		//correct variable name changed --SW
 		for (book book : PENDING) {
 			//correct variable name changed --SW
-			bookuserinterface.display(B.toString());
+			bookuserinterface.display(book.toString());
 		}   //correct variable name changed --SW
 		if (library.loansRemainingForMember(M) - PENDING.size() == 0) {
 			//correct variable name changed --SW
@@ -94,12 +94,15 @@ public class BorrowBookControl {
 			cancel();
 		}
 		else {
-			ui.display("\nFinal Borrowing List");
-			for (book b : PENDING) {
-				ui.display(b.toString());
+			bookuserinterface.display("\nFinal Borrowing List");
+				//correct variable name changed --SW
+			for (book book : PENDING) {
+					//correct variable name changed --SW
+				bookuserinterface.display(b.toString());
 			}
 			COMPLETED = new ArrayList<loan>();
-			ui.setState(BorrowBookUI.UI_STATE.FINALISING);
+				//correct variable name changed --SW
+			bookuserinterface.setState(BorrowBookUI.UI_STATE.FINALISING);
 			state = CONTROL_STATE.FINALISING;
 		}
 	}
