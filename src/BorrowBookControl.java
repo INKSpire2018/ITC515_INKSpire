@@ -66,19 +66,24 @@ public class BorrowBookControl {
 		book = library.Book(bookId);
 	   //correct variable name changed --SW	
 		if (book == null) {
+			//correct variable name changed --SW
 			bookuserinterface.display("Invalid bookId");
 			return;
-		}
+		}    //correct variable name changed --SW
 		if (!book.Available()) {
+			//correct variable name changed --SW
 			bookuserinterface.display("Book cannot be borrowed");
 			return;
-		}
-		PENDING.add(B);
-		for (book B : PENDING) {
-			ui.display(B.toString());
-		}
-		if (L.loansRemainingForMember(M) - PENDING.size() == 0) {
-			ui.display("Loan limit reached");
+		}//correct variable name changed --SW
+		PENDING.add(book);
+		//correct variable name changed --SW
+		for (book book : PENDING) {
+			//correct variable name changed --SW
+			bookuserinterface.display(B.toString());
+		}   //correct variable name changed --SW
+		if (library.loansRemainingForMember(M) - PENDING.size() == 0) {
+			//correct variable name changed --SW
+			bookuserinterface.display("Loan limit reached");
 			Complete();
 		}
 	}
