@@ -65,6 +65,5 @@ public class PayFineControl {
 		return change;
 	}
 	
-
-
+//Unnecessary new line removed, shouldnt be more than 2 new lines between metods and classes.
 }
