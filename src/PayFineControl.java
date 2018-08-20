@@ -8,7 +8,8 @@ public class PayFineControl {
 	//A class name cannot be started from simple letter.library changed to Library
 	private Library library;
 	//A class name cannot be started from simple letter.member changed to Member
-	private Member member;;
+	//Unnecessary semicolon removed
+	private Member member;
 
 
 	public PayFineControl() {
