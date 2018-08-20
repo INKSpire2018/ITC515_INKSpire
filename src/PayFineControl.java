@@ -5,7 +5,8 @@ public class PayFineControl {
 	private enum CONTROL_STATE { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
 	private CONTROL_STATE state;
 	
-	private library library;
+	//A class name cannot be started from simple letter.library changed to Library
+	private Library library;
 	private member member;;
 
 
