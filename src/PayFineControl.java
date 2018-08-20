@@ -55,7 +55,7 @@ public class PayFineControl {
 	public void cancel() {
 		ui.setState(PayFineUI.UI_STATE.CANCELLED);
 		//enum name CONTROL_STATE changed into ControlState
-		state = CONTROL_STATE.CANCELLED;
+		state = ControlState.CANCELLED;
 	}
 
 
