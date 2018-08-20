@@ -13,7 +13,8 @@ public class PayFineControl {
 
 
 	public PayFineControl() {
-		this.library = library.INSTANCE();
+		//method name INSTANCE changed to getInstance
+		this.library = library.getInstance();
 		state = CONTROL_STATE.INITIALISED;
 	}
 	
