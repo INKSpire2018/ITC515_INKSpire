@@ -5,16 +5,19 @@ public class FixBookUI {
 
 	public static enum UI_STATE { INITIALISED, READY, FIXING, COMPLETED };
 
-	private FixBookControl control;
+	//variable control changed into fixBookControl
+	private FixBookControl fixBookControl;
 	private Scanner input;
 	private UI_STATE state;
 
-	
-	public FixBookUI(FixBookControl control) {
-		this.control = control;
+	//variable control changed into fixBookControl
+	public FixBookUI(FixBookControl fixBookControl) {
+		//variable control changed into fixBookControl
+		this.fixBookControl = fixBookControl;
 		input = new Scanner(System.in);
 		state = UI_STATE.INITIALISED;
-		control.setUI(this);
+		//variable control changed into fixBookControl
+		fixBookControl.setUI(this);
 	}
 
 
@@ -33,12 +36,14 @@ public class FixBookUI {
 			case READY:
 				String bookStr = input("Scan Book (<enter> completes): ");
 				if (bookStr.length() == 0) {
-					control.scanningComplete();
+					//variable control changed into fixBookControl
+					fixBookControl.scanningComplete();
 				}
 				else {
 					try {
 						int bookId = Integer.valueOf(bookStr).intValue();
-						control.bookScanned(bookId);
+						//variable control changed into fixBookControl
+						fixBookControl.bookScanned(bookId);
 					}
 					catch (NumberFormatException e) {
 						output("Invalid bookId");
@@ -52,7 +57,8 @@ public class FixBookUI {
 				if (ans.toUpperCase().equals("Y")) {
 					fix = true;
 				}
-				control.fixBook(fix);
+				//variable control changed into fixBookControl
+				fixBookControl.fixBook(fix);
 				break;
 								
 			case COMPLETED:
