@@ -43,6 +43,7 @@ public class Member implements Serializable {
         this.loansList = new HashMap<>();
     }
 
+	//override toString method
     public String toString() {
         StringBuilder sb = new StringBuilder();
         //ID->id
@@ -65,6 +66,7 @@ public class Member implements Serializable {
         return sb.toString();
     }
 
+	//accessor method for id
     public int getId() {
         //ID->id
         return id;
