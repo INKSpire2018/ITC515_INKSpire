@@ -22,7 +22,7 @@ public class BorrowBookControl {
 		//correct variable name changed --SW
 		this. library= library.INSTANCE();
 		state = CONTROL_STATE.INITIALISED;
-	}
+	}//change  intonation--sw
 	
 
 	public void setUI(BorrowBookUI bookuserinterface) {
@@ -32,7 +32,7 @@ public class BorrowBookControl {
 		this.bookuserinterface = bookuserinterface;
 		bookuserinterface.setState(BorrowBookUI.UI_STATE.READY);
 		state = CONTROL_STATE.READY;		
-	}
+	}//change  intonation--sw
 
 		
 	public void Swiped(int memberId) {
@@ -43,17 +43,18 @@ public class BorrowBookControl {
 		if (M == null) {
 			ui.display("Invalid memberId");
 			return;
-		}
+		}//change  intonation--sw
 		if (L.memberCanBorrow(M)) {
 			PENDING = new ArrayList<>();
 			//correct variable name changed --SW
 			bookuserinterface.setState(BorrowBookUI.UI_STATE.SCANNING);
-			state = CONTROL_STATE.SCANNING; }
-		else 
-		{   //correct variable name changed --SW
+			state = CONTROL_STATE.SCANNING; 
+		}//change  intonation--sw
+		else{   //correct variable name changed --SW
 			bookuserinterface.display("Member cannot borrow at this time");
 			//correct variable name changed --SW
-			bookuserinterface.setState(BorrowBookUI.UI_STATE.RESTRICTED); }}
+			bookuserinterface.setState(BorrowBookUI.UI_STATE.RESTRICTED); }
+		}//change  intonation--sw
 	
 	
 	public void Scanned(int bookId) {
@@ -69,7 +70,8 @@ public class BorrowBookControl {
 			//correct variable name changed --SW
 			bookuserinterface.display("Invalid bookId");
 			return;
-		}    //correct variable name changed --SW
+		} //change  intonation--sw
+		//correct variable name changed --SW
 		if (!book.Available()) {
 			//correct variable name changed --SW
 			bookuserinterface.display("Book cannot be borrowed");

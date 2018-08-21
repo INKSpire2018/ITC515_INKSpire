@@ -114,7 +114,7 @@ public class book implements Serializable {
 		 //correct variable name changed --SW
 		if (state.equals(state.DAMAGED)) {
 			state = state.AVAILABLE;
-		}
+		}//change intonation --SW
 		else {
 			throw new RuntimeException(String.format("Book: cannot repair while book is in state: %s", state));
 		}
