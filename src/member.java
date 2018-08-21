@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.Map;
 
 @SuppressWarnings("serial")
-public class member implements Serializable {
+//chnaged class name to capital - Mihian
+public class Member implements Serializable {
 
     //change LN -> lastName
     private String lastName;
@@ -42,6 +43,7 @@ public class member implements Serializable {
         this.loansList = new HashMap<>();
     }
 
+	//override toString method
     public String toString() {
         StringBuilder sb = new StringBuilder();
         //ID->id
@@ -64,6 +66,7 @@ public class member implements Serializable {
         return sb.toString();
     }
 
+	//accessor method for id
     public int getId() {
         //ID->id
         return id;
