@@ -3,14 +3,15 @@ import java.util.Scanner;
 
 public class PayFineUI {
 
-
-	public static enum UI_STATE { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
+	//Change enum UI_STATE to UiState 
+	public static enum UiState { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
 
 	//Chanege object conitrol to payFineControl
 	private PayFineControl payFineControl;
 	//Change object input to inputScanner
 	private Scanner inputScanner;
-	private UI_STATE state;
+	//Change enum UI_STATE to UiState 
+	private UiState state;
 
 	//Chanege argument conitrol to payFineControl
 	public PayFineUI(PayFineControl payFineControl) {
@@ -18,13 +19,14 @@ public class PayFineUI {
 		this.payFineControl = payFineControl;
 		//Change object input to inputScanner
 		inputScanner = new Scanner(System.in);
-		state = UI_STATE.INITIALISED;
+		//Change enum UI_STATE to UiState 
+		state = UiState.INITIALISED;
 		//Chanege object conitrol to payFineControl
 		payFineControl.setUI(this);
 	}
 	
-	
-	public void setState(UI_STATE state) {
+	//Change enum UI_STATE to UiState 
+	public void setState(UiState state) {
 		this.state = state;
 	}
 
@@ -98,7 +100,7 @@ public class PayFineUI {
 	//Change string prompt to promptString
 	private String input(String promptString) {
 		//Change string prompt to promptString
-		System.out.print(promptString);
+		System.out.print(prompt);
 		//Change object input to inputScanner
 		return input.nextLine();
 	}	
