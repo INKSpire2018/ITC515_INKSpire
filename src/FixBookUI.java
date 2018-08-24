@@ -45,14 +45,17 @@ public class FixBookUI {
 			switch (uiState) {
 			
 			case READY:
-				String bookStr = input("Scan Book (<enter> completes): ");
-				if (bookStr.length() == 0) {
+				//Change String variable bookStr to bookName
+				String bookName = input("Scan Book (<enter> completes): ");
+				//Change String variable bookStr to bookName
+				if (bookName.length() == 0) {
 					//variable control changed into fixBookControl
 					fixBookControl.scanningComplete();
 				}
 				else {
 					try {
-						int bookId = Integer.valueOf(bookStr).intValue();
+						//Change String variable bookStr to bookName
+						int bookId = Integer.valueOf(bookName).intValue();
 						//variable control changed into fixBookControl
 						fixBookControl.bookScanned(bookId);
 					}
