@@ -43,14 +43,17 @@ public class ReturnBookUi {
 				
 			case READY:
 				//Change method input to getInput
-				String bookStr = getInput("Scan Book (<enter> completes): ");
-				if (bookStr.length() == 0) {
+				//Change String variable bookStr to bookName
+				String bookName = getInput("Scan Book (<enter> completes): ");
+				//Change String variable bookStr to bookName
+				if (bookName.length() == 0) {
 					//Change object control to returnBookControl
 					returnBookControl.scanningComplete();
 				}
 				else {
 					try {
-						int bookId = Integer.valueOf(bookStr).intValue();
+						//Change String variable bookStr to bookName
+						int bookId = Integer.valueOf(bookName).intValue();
 						//Change object control to returnBookControl
 						returnBookControl.bookScanned(bookId);
 					}
