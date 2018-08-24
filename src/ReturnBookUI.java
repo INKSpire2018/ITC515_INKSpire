@@ -74,8 +74,10 @@ public class ReturnBookUI {
 	}
 
 	//Change method input to getInput
-	private String getInput(String prompt) {
-		System.out.print(prompt);
+	//Change parameter prompt to promptString
+	private String getInput(String promptString) {
+		//Change parameter prompt to promptString
+		System.out.print(promptString);
 		//Change object input to inputScanner
 		return inputScanner.nextLine();
 	}	
