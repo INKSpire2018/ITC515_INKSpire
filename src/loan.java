@@ -37,55 +37,69 @@ public class Loan implements Serializable {
 
 	
 	public void checkOverDue() {
-		if (state == LOAN_STATE.CURRENT &&
-			Calendar.getInstance().Date().after(D)) {
-			this.state = LOAN_STATE.OVER_DUE;			
+		//changed the variable type LOAN_STATE to LoanState by Malinga
+		//changed the variable name D to date by Malinga
+		if (state == LoanState.CURRENT &&
+			Calendar.getInstance().Date().after(date)) {
+			this.state = LoanState.OVER_DUE;			
 		}
 	}
 
 	
+	//changed the variable type LOAN_STATE to LoanState by Malinga
 	public boolean isOverDue() {
-		return state == LOAN_STATE.OVER_DUE;
+		return state == LoanState.OVER_DUE;
 	}
 
-	
+
+	//changed the variable name ID to id by Malinga
 	public Integer getId() {
-		return ID;
+		return id;
 	}
 
 
+	//changed the variable name D to date by Malinga
 	public Date getDueDate() {
-		return D;
+		return date;
 	}
 	
 	
 	public String toString() {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-		StringBuilder sb = new StringBuilder();
-		sb.append("Loan:  ").append(ID).append("\n")
-		  .append("  Borrower ").append(M.getId()).append(" : ")
-		  .append(M.getLastName()).append(", ").append(M.getFirstName()).append("\n")
+		//changed the variable name sdf to simpleDateFormat by Malinga
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+		//changed the variable name sb to stringBuilder by Malinga
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("Loan:  ").append(id).append("\n")
+		  .append("  Borrower ").append(member.getId()).append(" : ")
+		  .append(member.getLastName()).append(", ").append(M.getFirstName()).append("\n")
 		  .append("  Book ").append(B.ID()).append(" : " )
 		  .append(B.Title()).append("\n")
-		  .append("  DueDate: ").append(sdf.format(D)).append("\n")
+		  .append("  DueDate: ").append(simpleDateFormat.format(D)).append("\n")
 		  .append("  State: ").append(state);		
-		return sb.toString();
+		return stringBuilder.toString();
 	}
 
 
-	public member Member() {
-		return M;
+	//changed the method name Member to getMember by Malinga
+	public member getMember() {
+		//changed the variable name M to member by Malinga
+		return member;
 	}
 
 
-	public book Book() {
-		return B;
+	//changed the method name Book to GetBook by Malinga
+	public book getBook() {
+		//changed the variable name B to book by Malinga
+		return book;
 	}
 
 
-	public void Loan() {
-		state = LOAN_STATE.DISCHARGED;		
+	//changed method name Loan to setLoanState by Malinga
+	public void setLoanState() {
+		//changed the variable type LOAN_STATE to LoanState by Malinga
+		state = LoanState.DISCHARGED;		
 	}
 
 }
