@@ -4,11 +4,15 @@ import java.util.concurrent.TimeUnit;
 public class Calendar {
 	
 	private static Calendar self;
-	private static java.util.Calendar cal;
+	
+	//changed the variable name cal to calender by Hashan
+	private static java.util.Calendar calender;
 	
 	
-	private Calendar() {
-		cal = java.util.Calendar.getInstance();
+	private Calendar() 
+	{
+		//changed the variable name cal to calender by Hashan
+		calender = java.util.Calendar.getInstance();
 	}
 	
 	public static Calendar getInstance() {
@@ -18,17 +22,28 @@ public class Calendar {
 		return self;
 	}
 	
-	public void incrementDate(int days) {
-		cal.add(java.util.Calendar.DATE, days);		
+	public void incrementDate(int days) 
+	{
+		//changed the variable name cal to calender by Hashan
+		calender.add(java.util.Calendar.DATE, days);		
 	}
 	
 	public synchronized void setDate(Date date) {
 		try {
-			cal.setTime(date);
-	        cal.set(java.util.Calendar.HOUR_OF_DAY, 0);  
-	        cal.set(java.util.Calendar.MINUTE, 0);  
-	        cal.set(java.util.Calendar.SECOND, 0);  
-	        cal.set(java.util.Calendar.MILLISECOND, 0);
+			//changed the variable name cal to calender by Hashan
+			calender.setTime(date);
+			
+			//changed the variable name cal to calender by Hashan
+	        calender.set(java.util.Calendar.HOUR_OF_DAY, 0);  
+			
+			//changed the variable name cal to calender by Hashan
+	        calender.set(java.util.Calendar.MINUTE, 0);  
+			
+			//changed the variable name cal to calender by Hashan
+	        calender.set(java.util.Calendar.SECOND, 0);  
+			
+			//changed the variable name cal to calender by Hashan
+	        calender.set(java.util.Calendar.MILLISECOND, 0);
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -36,11 +51,20 @@ public class Calendar {
 	}
 	public synchronized Date Date() {
 		try {
-	        cal.set(java.util.Calendar.HOUR_OF_DAY, 0);  
-	        cal.set(java.util.Calendar.MINUTE, 0);  
-	        cal.set(java.util.Calendar.SECOND, 0);  
-	        cal.set(java.util.Calendar.MILLISECOND, 0);
-			return cal.getTime();
+			//changed the variable name cal to calender by Hashan
+	        calender.set(java.util.Calendar.HOUR_OF_DAY, 0);  
+			
+			//changed the variable name cal to calender by Hashan
+	        calender.set(java.util.Calendar.MINUTE, 0);  
+			
+			//changed the variable name cal to calender by Hashan
+	        calender.set(java.util.Calendar.SECOND, 0);  
+			
+			//changed the variable name cal to calender by Hashan
+	        calender.set(java.util.Calendar.MILLISECOND, 0);
+			
+			//changed the variable name cal to calender by Hashan
+			return calender.getTime();
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -49,9 +73,14 @@ public class Calendar {
 
 	public synchronized Date getDueDate(int loanPeriod) {
 		Date now = Date();
-		cal.add(java.util.Calendar.DATE, loanPeriod);
+		
+		//changed the variable name cal to calender by Hashan
+		calender.add(java.util.Calendar.DATE, loanPeriod);
+		
 		Date dueDate = cal.getTime();
-		cal.setTime(now);
+		
+		//changed the variable name cal to calender by Hashan
+		calender.setTime(now);
 		return dueDate;
 	}
 	
