@@ -8,14 +8,16 @@ public class PayFineUI {
 
 	//Chanege object conitrol to payFineControl
 	private PayFineControl payFineControl;
-	private Scanner input;
+	//Change object input to inputScanner
+	private Scanner inputScanner;
 	private UI_STATE state;
 
 	//Chanege argument conitrol to payFineControl
 	public PayFineUI(PayFineControl payFineControl) {
 		//Chanege object conitrol to payFineControl
 		this.payFineControl = payFineControl;
-		input = new Scanner(System.in);
+		//Change object input to inputScanner
+		inputScanner = new Scanner(System.in);
 		state = UI_STATE.INITIALISED;
 		//Chanege object conitrol to payFineControl
 		payFineControl.setUI(this);
@@ -66,7 +68,7 @@ public class PayFineUI {
 				if (amount <= 0) {
 					output("Amount must be positive");
 					break;
-				}\
+				}
 				//Chanege object conitrol to payFineControl
 				payFineControl.payFine(amount);
 				break;
@@ -90,6 +92,7 @@ public class PayFineUI {
 	
 	private String input(String prompt) {
 		System.out.print(prompt);
+		//Change object input to inputScanner
 		return input.nextLine();
 	}	
 		
