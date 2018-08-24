@@ -90,8 +90,8 @@ public class ReturnBookUI {
 		System.out.println(object);
 	}
 	
-			
-	public void display(Object object) {
+	//Change method display to setDisplay		
+	public void setDisplay(Object object) {
 		output(object);
 	}
 	
