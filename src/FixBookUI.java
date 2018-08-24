@@ -8,7 +8,8 @@ public class FixBookUI {
 
 	//variable control changed into fixBookControl
 	private FixBookControl fixBookControl;
-	private Scanner input;
+	//Change Scanner object input into inputScanner
+	private Scanner inputScanner;
 	//enum UI_STATE is changed into UiState
 	private UiState state;
 
@@ -16,7 +17,8 @@ public class FixBookUI {
 	public FixBookUI(FixBookControl fixBookControl) {
 		//variable control changed into fixBookControl
 		this.fixBookControl = fixBookControl;
-		input = new Scanner(System.in);
+		//Change Scanner object input into inputScanner
+		inputScanner = new Scanner(System.in);
 		//enum UI_STATE is changed into UiState
 		state = UiState.INITIALISED;
 		//variable control changed into fixBookControl
@@ -81,7 +83,8 @@ public class FixBookUI {
 	
 	private String input(String prompt) {
 		System.out.print(prompt);
-		return input.nextLine();
+		//Change Scanner object input into inputScanner
+		return inputScanner.nextLine();
 	}	
 		
 		
