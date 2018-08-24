@@ -24,7 +24,8 @@ public class ReturnBookUI {
 
 
 	public void run() {		
-		output("Return Book Use Case UI\n");
+		//Change method output to setOutput
+		setOutput("Return Book Use Case UI\n");
 		
 		while (true) {
 			
