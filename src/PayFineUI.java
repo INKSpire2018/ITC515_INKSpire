@@ -11,7 +11,8 @@ public class PayFineUI {
 	//Change object input to inputScanner
 	private Scanner inputScanner;
 	//Change enum UI_STATE to UiState 
-	private UiState state;
+	//Change object state to uiState
+	private UiState uiState;
 
 	//Chanege argument conitrol to payFineControl
 	public PayFineUI(PayFineControl payFineControl) {
@@ -20,14 +21,17 @@ public class PayFineUI {
 		//Change object input to inputScanner
 		inputScanner = new Scanner(System.in);
 		//Change enum UI_STATE to UiState 
-		state = UiState.INITIALISED;
+		//Change object state to uiState
+		uiState = UiState.INITIALISED;
 		//Chanege object conitrol to payFineControl
 		payFineControl.setUI(this);
 	}
 	
 	//Change enum UI_STATE to UiState 
-	public void setState(UiState state) {
-		this.state = state;
+	//Change parameter state to uiState
+	public void setState(UiState uiState) {
+		//Change object state to uiState
+		this.uiState = uiState;
 	}
 
 
@@ -36,7 +40,8 @@ public class PayFineUI {
 		
 		while (true) {
 			
-			switch (state) {
+			//Change object state to uiState
+			switch (uiState) {
 			
 			case READY:
 				// Change memStr to memberIdString
@@ -91,7 +96,8 @@ public class PayFineUI {
 			
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("FixBookUI : unhandled state :" + state);			
+				//Change object state to uiState
+				throw new RuntimeException("FixBookUI : unhandled state :" + uiState);			
 			
 			}		
 		}		
