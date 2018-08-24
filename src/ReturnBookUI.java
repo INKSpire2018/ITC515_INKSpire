@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
-
-public class ReturnBookUI {
+//Change class name ReturnBookUI to ReturnBookUi
+public class ReturnBookUi {
 	
 	//Change enum name UI_STATE to UiState
 	public static enum UiState { INITIALISED, READY, INSPECTING, COMPLETED };
@@ -15,7 +15,8 @@ public class ReturnBookUI {
 	private UiState uiState;
 
 	//Change parameter control to returnBookControl
-	public ReturnBookUI(ReturnBookControl returnBookControl) {
+	//Change class name ReturnBookUI to ReturnBookUi
+	public ReturnBookUi(ReturnBookControl returnBookControl) {
 		//Change object control to returnBookControl
 		this.returnBookControl = returnBookControl;
 		//Change object input to inputScanner
