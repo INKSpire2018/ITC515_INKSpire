@@ -6,16 +6,19 @@ public class PayFineUI {
 
 	public static enum UI_STATE { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
 
-	private PayFineControl control;
+	//Chanege object conitrol to payFineControl
+	private PayFineControl payFineControl;
 	private Scanner input;
 	private UI_STATE state;
 
-	
-	public PayFineUI(PayFineControl control) {
-		this.control = control;
+	//Chanege argument conitrol to payFineControl
+	public PayFineUI(PayFineControl payFineControl) {
+		//Chanege object conitrol to payFineControl
+		this.payFineControl = payFineControl;
 		input = new Scanner(System.in);
 		state = UI_STATE.INITIALISED;
-		control.setUI(this);
+		//Chanege object conitrol to payFineControl
+		payFineControl.setUI(this);
 	}
 	
 	
@@ -34,12 +37,14 @@ public class PayFineUI {
 			case READY:
 				String memStr = input("Swipe member card (press <enter> to cancel): ");
 				if (memStr.length() == 0) {
-					control.cancel();
+					//Chanege object conitrol to payFineControl
+					payFineControl.cancel();
 					break;
 				}
 				try {
 					int memberId = Integer.valueOf(memStr).intValue();
-					control.cardSwiped(memberId);
+					//Chanege object conitrol to payFineControl
+					payFineControl.cardSwiped(memberId);
 				}
 				catch (NumberFormatException e) {
 					output("Invalid memberId");
@@ -50,7 +55,8 @@ public class PayFineUI {
 				double amount = 0;
 				String amtStr = input("Enter amount (<Enter> cancels) : ");
 				if (amtStr.length() == 0) {
-					control.cancel();
+					//Chanege object conitrol to payFineControl
+					payFineControl.cancel();
 					break;
 				}
 				try {
@@ -60,8 +66,9 @@ public class PayFineUI {
 				if (amount <= 0) {
 					output("Amount must be positive");
 					break;
-				}
-				control.payFine(amount);
+				}\
+				//Chanege object conitrol to payFineControl
+				payFineControl.payFine(amount);
 				break;
 								
 			case CANCELLED:
