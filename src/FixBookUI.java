@@ -68,13 +68,16 @@ public class FixBookUI {
 			case FIXING:
 				//Change String variable ans to answerString
 				String answerString = input("Fix Book? (Y/N) : ");
-				boolean fix = false;
+				//Change boolean variable fix to fixStatus
+				boolean fixStatus = false;
 				//Change String variable ans to answerString
 				if (answerString.toUpperCase().equals("Y")) {
-					fix = true;
+					//Change boolean variable fix to fixStatus
+					fixStatus = true;
 				}
 				//variable control changed into fixBookControl
-				fixBookControl.fixBook(fix);
+				//Change String variable ans to answerString
+				fixBookControl.fixBook(fixStatus);
 				break;
 								
 			case COMPLETED:
