@@ -11,7 +11,8 @@ public class ReturnBookUI {
 	//Change object input to inputScanner
 	private Scanner inputScanner;
 	//Change enum name UI_STATE to UiState
-	private UiState state;
+	//Change object name state to uiState
+	private UiState uiState;
 
 	//Change parameter control to returnBookControl
 	public ReturnBookUI(ReturnBookControl returnBookControl) {
@@ -20,7 +21,8 @@ public class ReturnBookUI {
 		//Change object input to inputScanner
 		inputScanner = new Scanner(System.in);
 		//Change enum name UI_STATE to UiState
-		state = UiState.INITIALISED;
+		//Change object name state to uiState
+		uiState = UiState.INITIALISED;
 		//Change object control to returnBookControl
 		returnBookControl.setUI(this);
 	}
@@ -31,8 +33,8 @@ public class ReturnBookUI {
 		setOutput("Return Book Use Case UI\n");
 		
 		while (true) {
-			
-			switch (state) {
+			//Change object name state to uiState
+			switch (uiState) {
 			
 			case INITIALISED:
 				break;
@@ -77,7 +79,8 @@ public class ReturnBookUI {
 			default:
 				//Change method output to setOutput	
 				setOutput("Unhandled state");
-				throw new RuntimeException("ReturnBookUI : unhandled state :" + state);			
+				//Change object name state to uiState
+				throw new RuntimeException("ReturnBookUI : unhandled state :" + uiState);			
 			}
 		}
 	}
@@ -101,8 +104,9 @@ public class ReturnBookUI {
 		output(object);
 	}
 	//Change enum name UI_STATE to UiState
-	public void setState(UiState state) {
-		this.state = state;
+	//Change parameter/object name state to uiState
+	public void setState(UiState uiState) {
+		this.uiState = uiState;
 	}
 
 	
