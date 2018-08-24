@@ -93,8 +93,9 @@ public class FixBookUI {
 		
 	}
 
-	
-	private String input(String prompt) {
+	//Change String parameter prompt to promptString
+	private String input(String promptString) {
+		//Change String argument prompt to promptString
 		System.out.print(prompt);
 		//Change Scanner object input into inputScanner
 		return inputScanner.nextLine();
