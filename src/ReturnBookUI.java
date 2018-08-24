@@ -47,7 +47,8 @@ public class ReturnBookUI {
 						returnBookControl.bookScanned(bookId);
 					}
 					catch (NumberFormatException e) {
-						output("Invalid bookId");
+						//Change method output to setOutput	
+						setOutput("Invalid bookId");
 					}					
 				}
 				break;				
@@ -63,11 +64,13 @@ public class ReturnBookUI {
 				returnBookControl.dischargeLoan(isDamaged);
 			
 			case COMPLETED:
-				output("Return processing complete");
+				//Change method output to setOutput	
+				setOutput("Return processing complete");
 				return;
 			
 			default:
-				output("Unhandled state");
+				//Change method output to setOutput	
+				setOutput("Unhandled state");
 				throw new RuntimeException("ReturnBookUI : unhandled state :" + state);			
 			}
 		}
@@ -82,8 +85,8 @@ public class ReturnBookUI {
 		return inputScanner.nextLine();
 	}	
 		
-		
-	private void output(Object object) {
+	//Change method output to setOutput	
+	private void setOutput(Object object) {
 		System.out.println(object);
 	}
 	
