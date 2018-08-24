@@ -95,9 +95,10 @@ public class PayFineUI {
 		}		
 	}
 
-	
-	private String input(String prompt) {
-		System.out.print(prompt);
+	//Change string prompt to promptString
+	private String input(String promptString) {
+		//Change string prompt to promptString
+		System.out.print(promptString);
 		//Change object input to inputScanner
 		return input.nextLine();
 	}	
