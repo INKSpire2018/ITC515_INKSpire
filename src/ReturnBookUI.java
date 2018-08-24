@@ -25,7 +25,8 @@ public class ReturnBookUi {
 		//Change object name state to uiState
 		uiState = UiState.INITIALISED;
 		//Change object control to returnBookControl
-		returnBookControl.setUI(this);
+		//Change method name setUI to setUi
+		returnBookControl.setUi(this);
 	}
 
 
