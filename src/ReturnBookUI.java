@@ -2,14 +2,16 @@ import java.util.Scanner;
 
 
 public class ReturnBookUI {
-
-	public static enum UI_STATE { INITIALISED, READY, INSPECTING, COMPLETED };
+	
+	//Change enum name UI_STATE to UiState
+	public static enum UiState { INITIALISED, READY, INSPECTING, COMPLETED };
 
 	//Change object control to returnBookControl
 	private ReturnBookControl returnBookControl;
 	//Change object input to inputScanner
 	private Scanner inputScanner;
-	private UI_STATE state;
+	//Change enum name UI_STATE to UiState
+	private UiState state;
 
 	//Change parameter control to returnBookControl
 	public ReturnBookUI(ReturnBookControl returnBookControl) {
@@ -17,7 +19,8 @@ public class ReturnBookUI {
 		this.returnBookControl = returnBookControl;
 		//Change object input to inputScanner
 		inputScanner = new Scanner(System.in);
-		state = UI_STATE.INITIALISED;
+		//Change enum name UI_STATE to UiState
+		state = UiState.INITIALISED;
 		//Change object control to returnBookControl
 		returnBookControl.setUI(this);
 	}
@@ -97,8 +100,8 @@ public class ReturnBookUI {
 	public void setDisplay(Object object) {
 		output(object);
 	}
-	
-	public void setState(UI_STATE state) {
+	//Change enum name UI_STATE to UiState
+	public void setState(UiState state) {
 		this.state = state;
 	}
 
