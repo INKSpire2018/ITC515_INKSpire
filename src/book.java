@@ -102,7 +102,7 @@ public class book implements Serializable {
 			//correct variable name changed --SW
 				state = state.AVAILABLE;
 			}
-		}
+		}//change intonation--SW
 		else {
 			//correct variable name changed --SW
 			throw new RuntimeException(String.format("Book: cannot Return while book is in state: %s", state));
@@ -114,10 +114,10 @@ public class book implements Serializable {
 		 //correct variable name changed --SW
 		if (state.equals(state.DAMAGED)) {
 			state = state.AVAILABLE;
-		}
+		}//change intonation --SW
 		else {
 			throw new RuntimeException(String.format("Book: cannot repair while book is in state: %s", state));
-		}
+		}//change intonation--SW
 	}
 
 
