@@ -1,4 +1,5 @@
-public class ReturnBookControl {
+public class ReturnBookControl 
+{
 
 	private ReturnBookUI ui;
 	private enum CONTROL_STATE { INITIALISED, READY, INSPECTING };
@@ -8,7 +9,8 @@ public class ReturnBookControl {
 	private loan currentLoan;
 	
 
-	public ReturnBookControl() {
+	public ReturnBookControl() 
+	{
 		this.library = library.INSTANCE();
 		state = CONTROL_STATE.INITIALISED;
 	}
@@ -16,7 +18,8 @@ public class ReturnBookControl {
 	
 	public void setUI(ReturnBookUI ui) {
 		if (!state.equals(CONTROL_STATE.INITIALISED)) {
-			throw new RuntimeException("ReturnBookControl: cannot call setUI except in INITIALISED state");
+			// Change the wording in the Exception -> to start with a capital letter "Cannot"
+			throw new RuntimeException("ReturnBookControl: Cannot call setUI except in INITIALISED state");
 		}	
 		this.ui = ui;
 		ui.setState(ReturnBookUI.UI_STATE.READY);
@@ -26,7 +29,8 @@ public class ReturnBookControl {
 
 	public void bookScanned(int bookId) {
 		if (!state.equals(CONTROL_STATE.READY)) {
-			throw new RuntimeException("ReturnBookControl: cannot call bookScanned except in READY state");
+			// Change the wording in the Exception -> to start with a capital letter "Cannot"
+			throw new RuntimeException("ReturnBookControl: Cannot call bookScanned except in READY state");
 		}	
 		book currentBook = library.Book(bookId);
 		
@@ -57,7 +61,8 @@ public class ReturnBookControl {
 
 	public void scanningComplete() {
 		if (!state.equals(CONTROL_STATE.READY)) {
-			throw new RuntimeException("ReturnBookControl: cannot call scanningComplete except in READY state");
+			// Change the wording in the Exception -> to start with a capital letter "Cannot"
+			throw new RuntimeException("ReturnBookControl: Cannot call scanningComplete except in READY state");
 		}	
 		ui.setState(ReturnBookUI.UI_STATE.COMPLETED);		
 	}
@@ -65,7 +70,8 @@ public class ReturnBookControl {
 
 	public void dischargeLoan(boolean isDamaged) {
 		if (!state.equals(CONTROL_STATE.INSPECTING)) {
-			throw new RuntimeException("ReturnBookControl: cannot call dischargeLoan except in INSPECTING state");
+			// Change the wording in the Exception -> to start with a capital letter "Cannot"
+			throw new RuntimeException("ReturnBookControl: Cannot call dischargeLoan except in INSPECTING state");
 		}	
 		library.dischargeLoan(currentLoan, isDamaged);
 		currentLoan = null;
