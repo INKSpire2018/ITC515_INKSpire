@@ -11,7 +11,8 @@ public class FixBookUI {
 	//Change Scanner object input into inputScanner
 	private Scanner inputScanner;
 	//enum UI_STATE is changed into UiState
-	private UiState state;
+	//Change UiState object state into uiState
+	private UiState uiState;
 
 	//variable control changed into fixBookControl
 	public FixBookUI(FixBookControl fixBookControl) {
@@ -20,6 +21,7 @@ public class FixBookUI {
 		//Change Scanner object input into inputScanner
 		inputScanner = new Scanner(System.in);
 		//enum UI_STATE is changed into UiState
+		//Change UiState object state into uiState
 		state = UiState.INITIALISED;
 		//variable control changed into fixBookControl
 		fixBookControl.setUI(this);
@@ -27,8 +29,10 @@ public class FixBookUI {
 
 
 	//enum UI_STATE is changed into UiState
-	public void setState(UiState state) {
-		this.state = state;
+	//Change UiState object state into uiState
+	public void setState(UiState uiState) {
+		//Change UiState object state into uiState
+		this.uiState = uiState;
 	}
 
 	
@@ -37,7 +41,8 @@ public class FixBookUI {
 		
 		while (true) {
 			
-			switch (state) {
+			//Change UiState object state into uiState
+			switch (uiState) {
 			
 			case READY:
 				String bookStr = input("Scan Book (<enter> completes): ");
@@ -73,7 +78,7 @@ public class FixBookUI {
 			
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("FixBookUI : unhandled state :" + state);			
+				throw new RuntimeException("FixBookUI : unhandled state :" + uiState);			
 			
 			}		
 		}
