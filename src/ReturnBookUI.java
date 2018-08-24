@@ -7,14 +7,16 @@ public class ReturnBookUI {
 
 	//Change object control to returnBookControl
 	private ReturnBookControl returnBookControl;
-	private Scanner input;
+	//Change object input to inputScanner
+	private Scanner inputScanner;
 	private UI_STATE state;
 
 	//Change parameter control to returnBookControl
 	public ReturnBookUI(ReturnBookControl returnBookControl) {
 		//Change object control to returnBookControl
 		this.returnBookControl = returnBookControl;
-		input = new Scanner(System.in);
+		//Change object input to inputScanner
+		inputScanner = new Scanner(System.in);
 		state = UI_STATE.INITIALISED;
 		//Change object control to returnBookControl
 		returnBookControl.setUI(this);
@@ -72,7 +74,8 @@ public class ReturnBookUI {
 	
 	private String input(String prompt) {
 		System.out.print(prompt);
-		return input.nextLine();
+		//Change object input to inputScanner
+		return inputScanner.nextLine();
 	}	
 		
 		
