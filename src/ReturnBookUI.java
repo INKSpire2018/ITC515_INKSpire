@@ -55,9 +55,11 @@ public class ReturnBookUI {
 				
 			case INSPECTING:
 				//Change method input to getInput
-				String ans = getInput("Is book damaged? (Y/N): ");
+				//Change String variable ans to answerString
+				String answerString = getInput("Is book damaged? (Y/N): ");
 				boolean isDamaged = false;
-				if (ans.toUpperCase().equals("Y")) {					
+				//Change String variable ans to answerString
+				if (answerString.toUpperCase().equals("Y")) {					
 					isDamaged = true;
 				}
 				//Change object control to returnBookControl
