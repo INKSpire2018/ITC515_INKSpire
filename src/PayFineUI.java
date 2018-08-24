@@ -37,14 +37,17 @@ public class PayFineUI {
 			switch (state) {
 			
 			case READY:
-				String memStr = input("Swipe member card (press <enter> to cancel): ");
-				if (memStr.length() == 0) {
+				// Change memStr to memberIdString
+				String memberIdString = input("Swipe member card (press <enter> to cancel): ");
+				// Change memStr to memberIdString
+				if (memberIdString.length() == 0) {
 					//Chanege object conitrol to payFineControl
 					payFineControl.cancel();
 					break;
 				}
 				try {
-					int memberId = Integer.valueOf(memStr).intValue();
+					// Change memStr to memberIdString
+					int memberId = Integer.valueOf(memberIdString).intValue();
 					//Chanege object conitrol to payFineControl
 					payFineControl.cardSwiped(memberId);
 				}
