@@ -4,25 +4,28 @@ import java.util.Scanner;
 public class BorrowBookUI {
 	
 	public static enum UI_STATE { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };
-
-	private BorrowBookControl control;
-	private Scanner input;
+	//meaning full variable --SW
+	private BorrowBookControl controlBookBorrow;
+	//meaning full variable --SW
+	private Scanner ScannerInput;
 	private UI_STATE state;
 
 	
 	public BorrowBookUI(BorrowBookControl control) {
 		this.control = control;
-		input = new Scanner(System.in);
-		state = UI_STATE.INITIALISED;
+		ScannerInput = new Scanner(System.in);
+		//meaning full variable --SW
+		bookState = UI_STATE.INITIALISED;
 		control.setUI(this);
 	}
 
 	
 	private String input(String prompt) {
 		System.out.print(prompt);
-		return input.nextLine();
+		//correct variable name changed --SW
+		return ScannerInput.nextLine();
 	}	
-		
+	
 		
 	private void output(Object object) {
 		System.out.println(object);
@@ -30,16 +33,17 @@ public class BorrowBookUI {
 	
 			
 	public void setState(UI_STATE state) {
+		//correct variable name changed --SW
 		this.state = state;
 	}
 
-	
-	public void run() {
+	//meaning full function name changed--SW
+	public void systemRun() {
 		output("Borrow Book Use Case UI\n");
 		
 		while (true) {
-			
-			switch (state) {			
+			//correct variable name changed --SW
+			switch (bookState) {			
 			
 			case CANCELLED:
 				output("Borrowing Cancelled");
@@ -108,8 +112,8 @@ public class BorrowBookUI {
 		}		
 	}
 
-
-	public void display(Object object) {
+//meaningful function name changed--SW
+	public void outputDisplay(Object object) {
 		output(object);		
 	}
 
