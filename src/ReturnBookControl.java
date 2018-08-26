@@ -73,11 +73,11 @@ public class ReturnBookControl
 		{
 			ui.display(String.format("\nOverdue fine : $%.2f", overDueFine));
 		}
-		//changed the variable name UI_STATE to uiState
-		ui.setState(ReturnBookUI.uiState.INSPECTING);
+		//changed the variable name UI_STATE to uiState, INSPECTING -> inspecting
+		ui.setState(ReturnBookUI.uiState.inspecting);
 		
-		//changed the variable name CONTROL_STATE to controlState by Hashan
-		state = controlState.INSPECTING;		
+		//changed the variable name CONTROL_STATE to controlState, INSPECTING -> inspecting by Hashan
+		state = controlState.inspecting;		
 	}
 
 
@@ -89,15 +89,15 @@ public class ReturnBookControl
 			// Change the wording in the Exception -> to start with a capital letter "Cannot"
 			throw new RuntimeException("ReturnBookControl: Cannot call scanningComplete except in READY state");
 		}	
-		//changed the variable name UI_STATE to uiState
-		ui.setState(ReturnBookUI.uiState.COMPLETED);		
+		//changed the variable name UI_STATE to uiState, COMPLETED -> completed
+		ui.setState(ReturnBookUI.uiState.completed);		
 	}
 
 
 	public void dischargeLoan(boolean isDamaged) 
 	{
-		//changed the variable name CONTROL_STATE to controlState by Hashan
-		if (!state.equals(controlState.INSPECTING))
+		//changed the variable name CONTROL_STATE to controlState, INSPECTING -> inspecting by Hashan
+		if (!state.equals(controlState.inspecting))
 		{
 			// Change the wording in the Exception -> to start with a capital letter "Cannot"
 			throw new RuntimeException("ReturnBookControl: Cannot call dischargeLoan except in INSPECTING state");
@@ -108,7 +108,7 @@ public class ReturnBookControl
 		ui.setState(ReturnBookUI.uiState.ready);
 		
 		//changed the variable name CONTROL_STATE to controlState, READY -> ready by Hashan
-		state = controlState.READY;				
+		state = controlState.ready;				
 	}
 
 
