@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
-
-public class FixBookUI {
+//Change class name FixBookUI to FixBookUi
+public class FixBookUi {
 
 	//enum UI_STATE is changed into UiState
 	public static enum UiState { INITIALISED, READY, FIXING, COMPLETED };
@@ -15,7 +15,8 @@ public class FixBookUI {
 	private UiState uiState;
 
 	//variable control changed into fixBookControl
-	public FixBookUI(FixBookControl fixBookControl) {
+	//Change class name FixBookUI to FixBookUi
+	public FixBookUi(FixBookControl fixBookControl) {
 		//variable control changed into fixBookControl
 		this.fixBookControl = fixBookControl;
 		//Change Scanner object input into inputScanner
