@@ -30,18 +30,18 @@ public class ReturnBookControl
 			throw new RuntimeException("ReturnBookControl: Cannot call setUI except in INITIALISED state");
 		}	
 		this.ui = ui;
-		//changed the variable name UI_STATE to uiState
-		ui.setState(ReturnBookUI.uiState.READY);
+		//changed the variable name UI_STATE to uiState, READY -> ready
+		ui.setState(ReturnBookUI.uiState.ready);
 		
-		//changed the variable name CONTROL_STATE to controlState by Hashan
-		state = controlState.READY;		
+		//changed the variable name CONTROL_STATE to controlState, READY -> ready by Hashan
+		state = controlState.ready;		
 	}
 
 
 	public void bookScanned(int bookId) 
 	{
-		//changed the variable name CONTROL_STATE to controlState by Hashan
-		if (!state.equals(controlState.READY)) 
+		//changed the variable name CONTROL_STATE to controlState, READY -> ready by Hashan
+		if (!state.equals(controlState.ready)) 
 		{
 			// Change the wording in the Exception -> to start with a capital letter "Cannot"
 			throw new RuntimeException("ReturnBookControl: Cannot call bookScanned except in READY state");
@@ -83,8 +83,8 @@ public class ReturnBookControl
 
 	public void scanningComplete() 
 	{
-		//changed the variable name CONTROL_STATE to controlState by Hashan
-		if (!state.equals(controlState.READY)) 
+		//changed the variable name CONTROL_STATE to controlState, READY -> ready by Hashan
+		if (!state.equals(controlState.ready)) 
 		{
 			// Change the wording in the Exception -> to start with a capital letter "Cannot"
 			throw new RuntimeException("ReturnBookControl: Cannot call scanningComplete except in READY state");
@@ -104,10 +104,10 @@ public class ReturnBookControl
 		}	
 		library.dischargeLoan(currentLoan, isDamaged);
 		currentLoan = null;
-		//changed the variable name UI_STATE to uiState
-		ui.setState(ReturnBookUI.uiState.READY);
+		//changed the variable name UI_STATE to uiState, READY -> ready
+		ui.setState(ReturnBookUI.uiState.ready);
 		
-		//changed the variable name CONTROL_STATE to controlState by Hashan
+		//changed the variable name CONTROL_STATE to controlState, READY -> ready by Hashan
 		state = controlState.READY;				
 	}
 
