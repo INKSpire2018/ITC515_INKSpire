@@ -1,76 +1,114 @@
-public class ReturnBookControl {
+public class ReturnBookControl 
+{
 
 	private ReturnBookUI ui;
-	private enum CONTROL_STATE { INITIALISED, READY, INSPECTING };
-	private CONTROL_STATE state;
+	//changed the variable name CONTROL_STATE to controlState,INITIALISED -> initialised, READY -> ready, INSPECTING-> inspecting by Hashan
+	private enum controlState { initialised, ready, inspecting };
+	//changed the variable name CONTROL_STATE to controlState by Hashan
+	private controlState state;
 	
 	private library library;
 	private loan currentLoan;
 	
 
-	public ReturnBookControl() {
-		this.library = library.INSTANCE();
-		state = CONTROL_STATE.INITIALISED;
+	//public constructor
+	public ReturnBookControl() 
+	{
+		//changed the method name INSTANCE to instance
+		this.library = library.instance();
+		//changed the variable name CONTROL_STATE to controlState,INITIALISED -> initialised by Hashan
+		state = controlState.initialised;
 	}
 	
 	
-	public void setUI(ReturnBookUI ui) {
-		if (!state.equals(CONTROL_STATE.INITIALISED)) {
-			throw new RuntimeException("ReturnBookControl: cannot call setUI except in INITIALISED state");
+	public void setUI(ReturnBookUI ui) 
+	{
+		//changed the variable name CONTROL_STATE to controlState,INITIALISED -> initialised by Hashan
+		if (!state.equals(controlState.initialised)) 
+		{
+			// Change the wording in the Exception -> to start with a capital letter "Cannot"
+			throw new RuntimeException("ReturnBookControl: Cannot call setUI except in INITIALISED state");
 		}	
 		this.ui = ui;
-		ui.setState(ReturnBookUI.UI_STATE.READY);
-		state = CONTROL_STATE.READY;		
+		//changed the variable name UI_STATE to uiState, READY -> ready
+		ui.setState(ReturnBookUI.uiState.ready);
+		
+		//changed the variable name CONTROL_STATE to controlState, READY -> ready by Hashan
+		state = controlState.ready;		
 	}
 
 
-	public void bookScanned(int bookId) {
-		if (!state.equals(CONTROL_STATE.READY)) {
-			throw new RuntimeException("ReturnBookControl: cannot call bookScanned except in READY state");
+	public void bookScanned(int bookId) 
+	{
+		//changed the variable name CONTROL_STATE to controlState, READY -> ready by Hashan
+		if (!state.equals(controlState.ready)) 
+		{
+			// Change the wording in the Exception -> to start with a capital letter "Cannot"
+			throw new RuntimeException("ReturnBookControl: Cannot call bookScanned except in READY state");
 		}	
 		book currentBook = library.Book(bookId);
 		
-		if (currentBook == null) {
+		if (currentBook == null) 
+		{
 			ui.display("Invalid Book Id");
 			return;
 		}
-		if (!currentBook.On_loan()) {
+		if (!currentBook.On_loan()) 
+		{
 			ui.display("Book has not been borrowed");
 			return;
 		}		
 		currentLoan = library.getLoanByBookId(bookId);	
 		double overDueFine = 0.0;
-		if (currentLoan.isOverDue()) {
+		
+		if (currentLoan.isOverDue()) 
+		{
 			overDueFine = library.calculateOverDueFine(currentLoan);
 		}
 		ui.display("Inspecting");
 		ui.display(currentBook.toString());
 		ui.display(currentLoan.toString());
 		
-		if (currentLoan.isOverDue()) {
+		if (currentLoan.isOverDue()) 
+		{
 			ui.display(String.format("\nOverdue fine : $%.2f", overDueFine));
 		}
-		ui.setState(ReturnBookUI.UI_STATE.INSPECTING);
-		state = CONTROL_STATE.INSPECTING;		
+		//changed the variable name UI_STATE to uiState, INSPECTING -> inspecting
+		ui.setState(ReturnBookUI.uiState.inspecting);
+		
+		//changed the variable name CONTROL_STATE to controlState, INSPECTING -> inspecting by Hashan
+		state = controlState.inspecting;		
 	}
 
 
-	public void scanningComplete() {
-		if (!state.equals(CONTROL_STATE.READY)) {
-			throw new RuntimeException("ReturnBookControl: cannot call scanningComplete except in READY state");
+	public void scanningComplete() 
+	{
+		//changed the variable name CONTROL_STATE to controlState, READY -> ready by Hashan
+		if (!state.equals(controlState.ready)) 
+		{
+			// Change the wording in the Exception -> to start with a capital letter "Cannot"
+			throw new RuntimeException("ReturnBookControl: Cannot call scanningComplete except in READY state");
 		}	
-		ui.setState(ReturnBookUI.UI_STATE.COMPLETED);		
+		//changed the variable name UI_STATE to uiState, COMPLETED -> completed
+		ui.setState(ReturnBookUI.uiState.completed);		
 	}
 
 
-	public void dischargeLoan(boolean isDamaged) {
-		if (!state.equals(CONTROL_STATE.INSPECTING)) {
-			throw new RuntimeException("ReturnBookControl: cannot call dischargeLoan except in INSPECTING state");
+	public void dischargeLoan(boolean isDamaged) 
+	{
+		//changed the variable name CONTROL_STATE to controlState, INSPECTING -> inspecting by Hashan
+		if (!state.equals(controlState.inspecting))
+		{
+			// Change the wording in the Exception -> to start with a capital letter "Cannot"
+			throw new RuntimeException("ReturnBookControl: Cannot call dischargeLoan except in INSPECTING state");
 		}	
 		library.dischargeLoan(currentLoan, isDamaged);
 		currentLoan = null;
-		ui.setState(ReturnBookUI.UI_STATE.READY);
-		state = CONTROL_STATE.READY;				
+		//changed the variable name UI_STATE to uiState, READY -> ready
+		ui.setState(ReturnBookUI.uiState.ready);
+		
+		//changed the variable name CONTROL_STATE to controlState, READY -> ready by Hashan
+		state = controlState.ready;				
 	}
 
 
