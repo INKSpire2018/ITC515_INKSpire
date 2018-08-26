@@ -90,8 +90,10 @@ public class Calendar {
 		return dueDate;
 	}
 	
-	public synchronized long getDaysDifference(Date targetDate) {
-		long diffMillis = Date().getTime() - targetDate.getTime();
+	public synchronized long getDaysDifference(Date targetDate) 
+	{
+		//changed the variable name diffMillis to differenceMillisecounds by Hashan
+		long differenceMillisecounds = Date().getTime() - targetDate.getTime();
 	    long diffDays = TimeUnit.DAYS.convert(diffMillis, TimeUnit.MILLISECONDS);
 	    return diffDays;
 	}
