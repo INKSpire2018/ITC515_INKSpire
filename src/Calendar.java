@@ -94,7 +94,9 @@ public class Calendar {
 	{
 		//changed the variable name diffMillis to differenceMillisecounds by Hashan
 		long differenceMillisecounds = Date().getTime() - targetDate.getTime();
-	    long diffDays = TimeUnit.DAYS.convert(diffMillis, TimeUnit.MILLISECONDS);
+		
+		//changed the variable name diffDays to diffenceDays by Hashan
+	    long diffenceDays = TimeUnit.DAYS.convert(diffMillis, TimeUnit.MILLISECONDS);
 	    return diffDays;
 	}
 
