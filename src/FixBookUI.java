@@ -47,7 +47,8 @@ public class FixBookUi {
 			
 			case READY:
 				//Change String variable bookStr to bookName
-				String bookName = input("Scan Book (<enter> completes): ");
+				//Change method name input to getInput
+				String bookName = getInput("Scan Book (<enter> completes): ");
 				//Change String variable bookStr to bookName
 				if (bookName.length() == 0) {
 					//variable control changed into fixBookControl
@@ -68,7 +69,8 @@ public class FixBookUi {
 				
 			case FIXING:
 				//Change String variable ans to answerString
-				String answerString = input("Fix Book? (Y/N) : ");
+				//Change method name input to getInput
+				String answerString = getInput("Fix Book? (Y/N) : ");
 				//Change boolean variable fix to fixStatus
 				boolean fixStatus = false;
 				//Change String variable ans to answerString
@@ -95,7 +97,8 @@ public class FixBookUi {
 	}
 
 	//Change String parameter prompt to promptString
-	private String input(String promptString) {
+	//Change method name input to getInput
+	private String getInput(String promptString) {
 		//Change String argument prompt to promptString
 		System.out.print(prompt);
 		//Change Scanner object input into inputScanner
