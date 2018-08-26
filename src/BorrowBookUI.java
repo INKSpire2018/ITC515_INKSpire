@@ -4,25 +4,30 @@ import java.util.Scanner;
 public class BorrowBookUI {
 	
 	public static enum UI_STATE { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };
-
-	private BorrowBookControl control;
-	private Scanner input;
-	private UI_STATE state;
+	//meaning full variable --SW
+	private BorrowBookControl controlBookBorrow;
+	//meaning full variable --SW
+	private Scanner ScannerInput;
+	//meaning full variable --SW
+	private UiState state;
 
 	
 	public BorrowBookUI(BorrowBookControl control) {
 		this.control = control;
-		input = new Scanner(System.in);
-		state = UI_STATE.INITIALISED;
-		control.setUI(this);
+		ScannerInput = new Scanner(System.in);
+		//meaning full variable --SW
+		////correct variable name changed --SW
+		bookState = UiState.INITIALISED;
+		controlBookBorrow.setUI(this);
 	}
 
 	
 	private String input(String prompt) {
 		System.out.print(prompt);
-		return input.nextLine();
+		//correct variable name changed --SW
+		return ScannerInput.nextLine();
 	}	
-		
+	
 		
 	private void output(Object object) {
 		System.out.println(object);
@@ -30,16 +35,17 @@ public class BorrowBookUI {
 	
 			
 	public void setState(UI_STATE state) {
+		//correct variable name changed --SW
 		this.state = state;
 	}
 
-	
-	public void run() {
+	//meaning full function name changed--SW
+	public void systemRun() {
 		output("Borrow Book Use Case UI\n");
 		
 		while (true) {
-			
-			switch (state) {			
+			//correct variable name changed --SW
+			switch (bookState) {			
 			
 			case CANCELLED:
 				output("Borrowing Cancelled");
@@ -69,8 +75,11 @@ public class BorrowBookUI {
 			
 				
 			case SCANNING:
-				String bookStr = input("Scan Book (<enter> completes): ");
-				if (bookStr.length() == 0) {
+			//change variable name  bookStr to bookIdScan
+			//Change method input to getInput
+				String bookIdScan = getinput("Scan Book (<enter> completes): ");
+				//change variable name
+				if (bookIdScan.length() == 0) {
 					control.Complete();
 					break;
 				}
@@ -85,7 +94,8 @@ public class BorrowBookUI {
 					
 				
 			case FINALISING:
-				String ans = input("Commit loans? (Y/N): ");
+			//change string variable name to get input
+				String ans = getinput("Commit loans? (Y/N): ");
 				if (ans.toUpperCase().equals("N")) {
 					control.cancel();
 					
@@ -97,19 +107,21 @@ public class BorrowBookUI {
 				
 				
 			case COMPLETED:
-				output("Borrowing Completed");
+			//Change method output to getoutput
+				getoutput("Borrowing Completed");
 				return;
 	
 				
 			default:
-				output("Unhandled state");
+			//Change method output to getoutput
+				getoutput("Unhandled state");
 				throw new RuntimeException("BorrowBookUI : unhandled state :" + state);			
 			}
 		}		
 	}
 
-
-	public void display(Object object) {
+//meaningful function name changed--SW
+	public void outputDisplay(Object object) {
 		output(object);		
 	}
 
