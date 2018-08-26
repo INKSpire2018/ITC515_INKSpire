@@ -30,8 +30,8 @@ public class Calendar
 	
 	public void incrementDate(int days) 
 	{
-		//changed the variable name cal to calender by Hashan
-		calender.add(java.util.Calendar.DATE, days);		
+		//changed the variable name cal to calender, DATE-> date by Hashan
+		calender.add(java.util.Calendar.date, days);		
 	}
 	
 	public synchronized void setDate(Date date) 
@@ -42,17 +42,17 @@ public class Calendar
 			//changed the variable name cal to calender by Hashan
 			calender.setTime(date);
 			
-			//changed the variable name cal to calender by Hashan
-	        calender.set(java.util.Calendar.HOUR_OF_DAY, 0);  
+			//changed the variable name cal to calender,HOUR_OF_DAY -> hourOfDay by Hashan
+	        calender.set(java.util.Calendar.hourOfDay, 0);  
 			
-			//changed the variable name cal to calender by Hashan
-	        calender.set(java.util.Calendar.MINUTE, 0);  
+			//changed the variable name cal to calender by, MINUTE -> minute Hashan
+	        calender.set(java.util.Calendar.minute, 0);  
 			
-			//changed the variable name cal to calender by Hashan
-	        calender.set(java.util.Calendar.SECOND, 0);  
+			//changed the variable name cal to calender, SECOND-> second by Hashan
+	        calender.set(java.util.Calendar.second, 0);  
 			
-			//changed the variable name cal to calender by Hashan
-	        calender.set(java.util.Calendar.MILLISECOND, 0);
+			//changed the variable name cal to calender, MILLISECOND -> millisecond by Hashan
+	        calender.set(java.util.Calendar.millisecond, 0);
 		}// catches exceptions if occured
 		catch (Exception e) 
 		{
@@ -63,17 +63,17 @@ public class Calendar
 	{
 		//try block starts here
 		try {
-			//changed the variable name cal to calender by Hashan
-	        calender.set(java.util.Calendar.HOUR_OF_DAY, 0);  
+			//changed the variable name cal to calender,HOUR_OF_DAY -> hourOfDay  by Hashan
+	        calender.set(java.util.Calendar.hourOfDay, 0);  
 			
-			//changed the variable name cal to calender by Hashan
-	        calender.set(java.util.Calendar.MINUTE, 0);  
+			//changed the variable name cal to calender MINUTE -> minute  by Hashan
+	        calender.set(java.util.Calendar.minute, 0);  
 			
-			//changed the variable name cal to calender by Hashan
-	        calender.set(java.util.Calendar.SECOND, 0);  
+			//changed the variable name cal to calender, SECOND-> second  by Hashan
+	        calender.set(java.util.Calendar.second, 0);  
 			
-			//changed the variable name cal to calender by Hashan
-	        calender.set(java.util.Calendar.MILLISECOND, 0);
+			//changed the variable name cal to calender, MILLISECOND -> millisecond  by Hashan
+	        calender.set(java.util.Calendar.millisecond, 0);
 			
 			//changed the variable name cal to calender by Hashan
 			return calender.getTime();
@@ -88,8 +88,8 @@ public class Calendar
 	{
 		Date now = Date();
 		
-		//changed the variable name cal to calender by Hashan
-		calender.add(java.util.Calendar.DATE, loanPeriod);
+		//changed the variable name cal to calender, DATE -> date by Hashan
+		calender.add(java.util.Calendar.date, loanPeriod);
 		
 		//changed the variable name cal to calender by Hashan
 		Date dueDate = calender.getTime();
@@ -107,8 +107,8 @@ public class Calendar
 		long differenceMillisecounds = Date().getTime() - targetDate.getTime();
 		
 		//changed the variable name diffDays to diffenceDays by Hashan
-		//Added meaningful variable names by hashan diffMillis-> differenceMillisecounds
-	    long diffenceDays = TimeUnit.DAYS.convert(differenceMillisecounds, TimeUnit.MILLISECONDS);
+		//Added meaningful variable names by hashan diffMillis-> differenceMillisecounds, DAYS -> days
+	    long diffenceDays = TimeUnit.days.convert(differenceMillisecounds, TimeUnit.MILLISECONDS);
 		
 		//changed the variable name diffDays to diffenceDays by Hashan
 	    return diffenceDays;
