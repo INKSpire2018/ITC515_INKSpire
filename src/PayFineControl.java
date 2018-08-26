@@ -1,7 +1,8 @@
 //first
 public class PayFineControl {
 	
-	private PayFineUI ui;
+	//Change object ui to payFineUi
+	private PayFineUI payFineUi;
 	//enum name CONTROL_STATE changed into ControlState
 	private enum ControlState { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
 	//enum name CONTROL_STATE changed into ControlState
@@ -21,14 +22,18 @@ public class PayFineControl {
 		state = ControlState.INITIALISED;
 	}
 	
-	
-	public void setUI(PayFineUI ui) {
+		
+	//Change parameter ui to payFineUi
+	public void setUI(PayFineUI payFineUi) {
 		//enum name CONTROL_STATE changed into ControlState
 		if (!state.equals(ControlState.INITIALISED)) {
 			throw new RuntimeException("PayFineControl: cannot call setUI except in INITIALISED state");
 		}	
-		this.ui = ui;
-		ui.setState(PayFineUI.UI_STATE.READY);
+			
+		//Change objects ui to payFineUi
+		this.payFineUi = payFineUi;
+		//Change object ui to payFineUi
+		payFineUi.setState(PayFineUI.UI_STATE.READY);
 		//enum name CONTROL_STATE changed into ControlState
 		state = ControlState.READY;		
 	}
@@ -42,18 +47,22 @@ public class PayFineControl {
 		member = library.getMember(memberId);
 		
 		if (member == null) {
-			ui.display("Invalid Member Id");
+			//Change object ui to payFineUi
+			payFineUi.display("Invalid Member Id");
 			return;
 		}
-		ui.display(member.toString());
-		ui.setState(PayFineUI.UI_STATE.PAYING);
+		//Change object ui to payFineUi
+		payFineUi.display(member.toString());
+		//Change object ui to payFineUi
+		payFineUi.setState(PayFineUI.UI_STATE.PAYING);
 		//enum name CONTROL_STATE changed into ControlState
 		state = ControlState.PAYING;
 	}
 	
 	
 	public void cancel() {
-		ui.setState(PayFineUI.UI_STATE.CANCELLED);
+		//Change object ui to payFineUi
+		payFineUi.setState(PayFineUI.UI_STATE.CANCELLED);
 		//enum name CONTROL_STATE changed into ControlState
 		state = ControlState.CANCELLED;
 	}
@@ -66,10 +75,13 @@ public class PayFineControl {
 		}	
 		double change = member.payFine(amount);
 		if (change > 0) {
-			ui.display(String.format("Change: $%.2f", change));
+			//Change object ui to payFineUi
+			payFineUi.display(String.format("Change: $%.2f", change));
 		}
-		ui.display(member.toString());
-		ui.setState(PayFineUI.UI_STATE.COMPLETED);
+		//Change object ui to payFineUi
+		payFineUi.display(member.toString());
+		//Change object ui to payFineUi
+		payFineUi.setState(PayFineUI.UI_STATE.COMPLETED);
 		//enum name CONTROL_STATE changed into ControlState
 		state = ControlState.COMPLETED;
 		return change;
