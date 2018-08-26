@@ -2,8 +2,8 @@ public class ReturnBookControl
 {
 
 	private ReturnBookUI ui;
-	//changed the variable name CONTROL_STATE to controlState by Hashan
-	private enum controlState { INITIALISED, READY, INSPECTING };
+	//changed the variable name CONTROL_STATE to controlState,INITIALISED -> initialised, READY -> ready, INSPECTING-> inspecting by Hashan
+	private enum controlState { initialised, ready, inspecting };
 	//changed the variable name CONTROL_STATE to controlState by Hashan
 	private controlState state;
 	
@@ -15,15 +15,15 @@ public class ReturnBookControl
 	public ReturnBookControl() 
 	{
 		this.library = library.INSTANCE();
-		//changed the variable name CONTROL_STATE to controlState by Hashan
-		state = controlState.INITIALISED;
+		//changed the variable name CONTROL_STATE to controlState,INITIALISED -> initialised by Hashan
+		state = controlState.initialised;
 	}
 	
 	
 	public void setUI(ReturnBookUI ui) 
 	{
-		//changed the variable name CONTROL_STATE to controlState by Hashan
-		if (!state.equals(controlState.INITIALISED)) 
+		//changed the variable name CONTROL_STATE to controlState,INITIALISED -> initialised by Hashan
+		if (!state.equals(controlState.initialised)) 
 		{
 			// Change the wording in the Exception -> to start with a capital letter "Cannot"
 			throw new RuntimeException("ReturnBookControl: Cannot call setUI except in INITIALISED state");
