@@ -49,37 +49,37 @@ public class book implements Serializable {
 		return stringBuilder.toString();
 	}
 
-	public Integer ID() {
+	public Integer getId() {
 		//correct variable name changed --SW
 		return id;
 	}
 
-	public String Title() {
+	public String getTitle() {
 		//correct variable name changed --SW
 		return title;
 	}
 
 
 	
-	public boolean Available() {
+	public boolean isAvailable() {
 		//correct variable name changed --SW
 		return state == state.AVAILABLE;
 	}
 
 	
-	public boolean On_loan() {
+	public boolean isOnloan() {
 		//correct variable name changed --SW
 		return state == state.ON_LOAN;
 	}
 
 	
-	public boolean Damaged() {
+	public boolean isDamaged() {
 		//correct variable name changed --SW
 		return state == state.DAMAGED;
 	}
 
 	
-	public void Borrow() {
+	public void setBorrow() {
 			//correct variable name changed --SW
 		if (state.equals(state.AVAILABLE)) {
 			state = state.ON_LOAN;
@@ -91,7 +91,7 @@ public class book implements Serializable {
 	}
 
 
-	public void Return(boolean DAMAGED) {
+	public void setReturn(boolean DAMAGED) {
 			//correct variable name changed --SW
 		if (state.equals(state.ON_LOAN)) {
 			if (DAMAGED) {
@@ -102,7 +102,7 @@ public class book implements Serializable {
 			//correct variable name changed --SW
 				state = state.AVAILABLE;
 			}
-		}
+		}//change intonation--SW
 		else {
 			//correct variable name changed --SW
 			throw new RuntimeException(String.format("Book: cannot Return while book is in state: %s", state));
@@ -110,14 +110,14 @@ public class book implements Serializable {
 	}
 
 	
-	public void Repair() {
+	public void setRepair() {
 		 //correct variable name changed --SW
 		if (state.equals(state.DAMAGED)) {
 			state = state.AVAILABLE;
-		}
+		}//change intonation --SW
 		else {
 			throw new RuntimeException(String.format("Book: cannot repair while book is in state: %s", state));
-		}
+		}//change intonation--SW
 	}
 
 

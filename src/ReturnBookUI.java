@@ -1,86 +1,117 @@
 import java.util.Scanner;
 
-
-public class ReturnBookUI {
-
-	public static enum UI_STATE { INITIALISED, READY, INSPECTING, COMPLETED };
-
-	private ReturnBookControl control;
-	private Scanner input;
-	private UI_STATE state;
-
+//Change class name ReturnBookUI to ReturnBookUi
+public class ReturnBookUi {
 	
-	public ReturnBookUI(ReturnBookControl control) {
-		this.control = control;
-		input = new Scanner(System.in);
-		state = UI_STATE.INITIALISED;
-		control.setUI(this);
+	//Change enum name UI_STATE to UiState
+	public static enum UiState { INITIALISED, READY, INSPECTING, COMPLETED };
+
+	//Change object control to returnBookControl
+	private ReturnBookControl returnBookControl;
+	//Change object input to inputScanner
+	private Scanner inputScanner;
+	//Change enum name UI_STATE to UiState
+	//Change object name state to uiState
+	private UiState uiState;
+
+	//Change parameter control to returnBookControl
+	//Change class name ReturnBookUI to ReturnBookUi
+	public ReturnBookUi(ReturnBookControl returnBookControl) {
+		//Change object control to returnBookControl
+		this.returnBookControl = returnBookControl;
+		//Change object input to inputScanner
+		inputScanner = new Scanner(System.in);
+		//Change enum name UI_STATE to UiState
+		//Change object name state to uiState
+		uiState = UiState.INITIALISED;
+		//Change object control to returnBookControl
+		//Change method name setUI to setUi
+		returnBookControl.setUi(this);
 	}
 
 
 	public void run() {		
-		output("Return Book Use Case UI\n");
+		//Change method output to setOutput
+		setOutput("Return Book Use Case UI\n");
 		
 		while (true) {
-			
-			switch (state) {
+			//Change object name state to uiState
+			switch (uiState) {
 			
 			case INITIALISED:
 				break;
 				
 			case READY:
-				String bookStr = input("Scan Book (<enter> completes): ");
-				if (bookStr.length() == 0) {
-					control.scanningComplete();
+				//Change method input to getInput
+				//Change String variable bookStr to bookName
+				String bookName = getInput("Scan Book (<enter> completes): ");
+				//Change String variable bookStr to bookName
+				if (bookName.length() == 0) {
+					//Change object control to returnBookControl
+					returnBookControl.scanningComplete();
 				}
 				else {
 					try {
-						int bookId = Integer.valueOf(bookStr).intValue();
-						control.bookScanned(bookId);
+						//Change String variable bookStr to bookName
+						int bookId = Integer.valueOf(bookName).intValue();
+						//Change object control to returnBookControl
+						returnBookControl.bookScanned(bookId);
 					}
 					catch (NumberFormatException e) {
-						output("Invalid bookId");
+						//Change method output to setOutput	
+						setOutput("Invalid bookId");
 					}					
 				}
 				break;				
 				
 			case INSPECTING:
-				String ans = input("Is book damaged? (Y/N): ");
+				//Change method input to getInput
+				//Change String variable ans to answerString
+				String answerString = getInput("Is book damaged? (Y/N): ");
 				boolean isDamaged = false;
-				if (ans.toUpperCase().equals("Y")) {					
+				//Change String variable ans to answerString
+				if (answerString.toUpperCase().equals("Y")) {					
 					isDamaged = true;
 				}
-				control.dischargeLoan(isDamaged);
+				//Change object control to returnBookControl
+				returnBookControl.dischargeLoan(isDamaged);
 			
 			case COMPLETED:
-				output("Return processing complete");
+				//Change method output to setOutput	
+				setOutput("Return processing complete");
 				return;
 			
 			default:
-				output("Unhandled state");
-				throw new RuntimeException("ReturnBookUI : unhandled state :" + state);			
+				//Change method output to setOutput	
+				setOutput("Unhandled state");
+				//Change object name state to uiState
+				throw new RuntimeException("ReturnBookUI : unhandled state :" + uiState);			
 			}
 		}
 	}
 
-	
-	private String input(String prompt) {
-		System.out.print(prompt);
-		return input.nextLine();
+	//Change method input to getInput
+	//Change parameter prompt to promptString
+	private String getInput(String promptString) {
+		//Change parameter prompt to promptString
+		System.out.print(promptString);
+		//Change object input to inputScanner
+		return inputScanner.nextLine();
 	}	
 		
-		
-	private void output(Object object) {
+	//Change method output to setOutput	
+	private void setOutput(Object object) {
 		System.out.println(object);
 	}
 	
-			
-	public void display(Object object) {
+	//Change method display to setDisplay		
+	public void setDisplay(Object object) {
 		output(object);
 	}
-	
-	public void setState(UI_STATE state) {
-		this.state = state;
+	//Change enum name UI_STATE to UiState
+	//Change parameter/object name state to uiState
+	public void setState(UiState uiState) {
+		this.uiState = uiState;
 	}
 
 	
