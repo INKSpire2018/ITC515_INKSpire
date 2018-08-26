@@ -9,8 +9,8 @@ public class Loan implements Serializable {
 	//changed the enum name from LOAN_STATE to LoanState by Malinga
 	public static enum LoanState { CURRENT, OVER_DUE, DISCHARGED };
 	
-	//changed the variable name ID to id by Malinga
-	private int id;
+	//changed the variable name ID to loanId by Malinga
+	private int loanId;
 	//changed the variable name B to book by Malinga
 	private book book;
 	//changed the variable name M to member by Malinga
@@ -23,8 +23,8 @@ public class Loan implements Serializable {
 	
 	//changed the constructor name from loan to Loan by Malinga
 	public Loan(int loanId, book book, member member, Date dueDate) {
-		//changed the variable name ID to id by Malinga
-		this.id = loanId;
+		//changed the variable name ID to loanId by Malinga
+		this.loanId = loanId;
 		//changed the variable name B to book by Malinga
 		this.book = book;
 		//changed the variable name M to member by Malinga
@@ -52,9 +52,10 @@ public class Loan implements Serializable {
 	}
 
 
-	//changed the variable name ID to id by Malinga
-	public Integer getId() {
-		return id;
+	//changed the variable name ID to loanId by Malinga
+	//changed the method name getId to getLoanId by Malinga
+	public Integer getLoanId() {
+		return loanId;
 	}
 
 
