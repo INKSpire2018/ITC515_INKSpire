@@ -11,7 +11,7 @@ public class Calendar {
 	//changed the variable name cal to calender by Hashan
 	private static java.util.Calendar calender;
 	
-	
+	//private constructor
 	private Calendar() 
 	{
 		//changed the variable name cal to calender by Hashan
@@ -80,10 +80,13 @@ public class Calendar {
 		//changed the variable name cal to calender by Hashan
 		calender.add(java.util.Calendar.DATE, loanPeriod);
 		
-		Date dueDate = cal.getTime();
+		//changed the variable name cal to calender by Hashan
+		Date dueDate = calender.getTime();
 		
 		//changed the variable name cal to calender by Hashan
 		calender.setTime(now);
+		
+		//returns the due date
 		return dueDate;
 	}
 	
