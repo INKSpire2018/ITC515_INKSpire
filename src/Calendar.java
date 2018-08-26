@@ -4,7 +4,8 @@
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-public class Calendar {
+public class Calendar 
+{
 	
 	private static Calendar self;
 	
@@ -18,8 +19,10 @@ public class Calendar {
 		calender = java.util.Calendar.getInstance();
 	}
 	
-	public static Calendar getInstance() {
-		if (self == null) {
+	public static Calendar getInstance() 
+	{
+		if (self == null) 
+		{
 			self = new Calendar();
 		}
 		return self;
@@ -31,8 +34,11 @@ public class Calendar {
 		calender.add(java.util.Calendar.DATE, days);		
 	}
 	
-	public synchronized void setDate(Date date) {
-		try {
+	public synchronized void setDate(Date date) 
+	{
+		//try block starts here
+		try 
+		{
 			//changed the variable name cal to calender by Hashan
 			calender.setTime(date);
 			
@@ -47,12 +53,15 @@ public class Calendar {
 			
 			//changed the variable name cal to calender by Hashan
 	        calender.set(java.util.Calendar.MILLISECOND, 0);
-		}
-		catch (Exception e) {
+		}// catches exceptions if occured
+		catch (Exception e) 
+		{
 			throw new RuntimeException(e);
 		}	
 	}
-	public synchronized Date Date() {
+	public synchronized Date Date() 
+	{
+		//try block starts here
 		try {
 			//changed the variable name cal to calender by Hashan
 	        calender.set(java.util.Calendar.HOUR_OF_DAY, 0);  
@@ -68,13 +77,15 @@ public class Calendar {
 			
 			//changed the variable name cal to calender by Hashan
 			return calender.getTime();
-		}
-		catch (Exception e) {
+		}// catches exceptions if occured
+		catch (Exception e) 
+		{
 			throw new RuntimeException(e);
 		}	
 	}
 
-	public synchronized Date getDueDate(int loanPeriod) {
+	public synchronized Date getDueDate(int loanPeriod) 
+	{
 		Date now = Date();
 		
 		//changed the variable name cal to calender by Hashan
