@@ -186,10 +186,12 @@ public class Library implements Serializable {
 
 	
 	//Changed the method name Add_mem to addNewMember by Malinga
-	public member addNewMember(String lastName, String firstName, String email, int phoneNo) {		
+	public member addNewMember(String lastName, String firstName, String email, int phoneNo) {
+		int memberId = member.getId();		
 		//Changed the method name nextMID to getNextMemberId by Malinga
 		member member = new member(lastName, firstName, email, phoneNo, getNextMemberId());
-		members.put(member.getId(), member);		
+		//no method calls within argument lists of any method calls - by Malinga
+		members.put(memberId, member);		
 		return member;
 	}
 
@@ -200,9 +202,11 @@ public class Library implements Serializable {
 	by Malinga
 	*/
 	public book addNewBook(String author, String title, String callNo) {	
+		int bookId = book.ID();
 		//Changed the method name nextBID to getNextBookId  by Malinga
 		book book = new book(author, title, callNo, getNextBookId());
-		catalog.put(book.ID(), book);		
+		//no method calls within argument lists of any method calls - by Malinga
+		catalog.put(bookId, book);		
 		return book;
 	}
 
@@ -262,12 +266,16 @@ public class Library implements Serializable {
 
 	
 	public loan issueLoan(book book, member member) {
+		int bookId = book.ID();
+		int loanId = loan.getId();
 		Date dueDate = Calendar.getInstance().getDueDate(LOAN_PERIOD);
 		loan loan = new loan(nextLID(), book, member, dueDate);
 		member.takeOutLoan(loan);
 		book.Borrow();
-		loans.put(loan.getId(), loan);
-		currentLoans.put(book.ID(), loan);
+		//no method calls within argument lists of any method calls - by Malinga
+		loans.put(loanId, loan);
+		//no method calls within argument lists of any method calls - by Malinga
+		currentLoans.put(bookId, loan);
 		return loan;
 	}
 	
@@ -295,6 +303,7 @@ public class Library implements Serializable {
 	public void dischargeLoan(loan currentLoan, boolean isDamaged) {
 		member member = currentLoan.Member();
 		book book  = currentLoan.Book();
+		int bookId = book.ID();
 		
 		double overDueFine = calculateOverDueFine(currentLoan);
 		member.addFine(overDueFine);	
@@ -303,10 +312,12 @@ public class Library implements Serializable {
 		book.Return(isDamaged);
 		if (isDamaged) {
 			member.addFine(DAMAGE_FEE);
-			damagedBooks.put(book.ID(), book);
+			//no method calls within argument lists of any method calls - by Malinga
+			damagedBooks.put(bookId, book);
 		}
 		currentLoan.Loan();
-		currentLoans.remove(book.ID());
+		//no method calls within argument lists of any method calls - by Malinga
+		currentLoans.remove(bookId);
 	}
 
 
@@ -318,9 +329,11 @@ public class Library implements Serializable {
 
 
 	public void repairBook(book currentBook) {
+		int currentBookId = currentBook.ID();
 		if (damagedBooks.containsKey(currentBook.ID())) {
 			currentBook.Repair();
-			damagedBooks.remove(currentBook.ID());
+			//no method calls within argument lists of any method calls - by Malinga
+			damagedBooks.remove(currentBookId);
 		}
 		else {
 			throw new RuntimeException("Library: repairBook: book is not damaged");

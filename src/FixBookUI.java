@@ -3,23 +3,36 @@ import java.util.Scanner;
 
 public class FixBookUI {
 
-	public static enum UI_STATE { INITIALISED, READY, FIXING, COMPLETED };
+	//enum UI_STATE is changed into UiState
+	public static enum UiState { INITIALISED, READY, FIXING, COMPLETED };
 
-	private FixBookControl control;
-	private Scanner input;
-	private UI_STATE state;
+	//variable control changed into fixBookControl
+	private FixBookControl fixBookControl;
+	//Change Scanner object input into inputScanner
+	private Scanner inputScanner;
+	//enum UI_STATE is changed into UiState
+	//Change UiState object state into uiState
+	private UiState uiState;
 
-	
-	public FixBookUI(FixBookControl control) {
-		this.control = control;
-		input = new Scanner(System.in);
-		state = UI_STATE.INITIALISED;
-		control.setUI(this);
+	//variable control changed into fixBookControl
+	public FixBookUI(FixBookControl fixBookControl) {
+		//variable control changed into fixBookControl
+		this.fixBookControl = fixBookControl;
+		//Change Scanner object input into inputScanner
+		inputScanner = new Scanner(System.in);
+		//enum UI_STATE is changed into UiState
+		//Change UiState object state into uiState
+		state = UiState.INITIALISED;
+		//variable control changed into fixBookControl
+		fixBookControl.setUI(this);
 	}
 
 
-	public void setState(UI_STATE state) {
-		this.state = state;
+	//enum UI_STATE is changed into UiState
+	//Change UiState object state into uiState
+	public void setState(UiState uiState) {
+		//Change UiState object state into uiState
+		this.uiState = uiState;
 	}
 
 	
@@ -28,17 +41,23 @@ public class FixBookUI {
 		
 		while (true) {
 			
-			switch (state) {
+			//Change UiState object state into uiState
+			switch (uiState) {
 			
 			case READY:
-				String bookStr = input("Scan Book (<enter> completes): ");
-				if (bookStr.length() == 0) {
-					control.scanningComplete();
+				//Change String variable bookStr to bookName
+				String bookName = input("Scan Book (<enter> completes): ");
+				//Change String variable bookStr to bookName
+				if (bookName.length() == 0) {
+					//variable control changed into fixBookControl
+					fixBookControl.scanningComplete();
 				}
 				else {
 					try {
-						int bookId = Integer.valueOf(bookStr).intValue();
-						control.bookScanned(bookId);
+						//Change String variable bookStr to bookName
+						int bookId = Integer.valueOf(bookName).intValue();
+						//variable control changed into fixBookControl
+						fixBookControl.bookScanned(bookId);
 					}
 					catch (NumberFormatException e) {
 						output("Invalid bookId");
@@ -47,12 +66,18 @@ public class FixBookUI {
 				break;	
 				
 			case FIXING:
-				String ans = input("Fix Book? (Y/N) : ");
-				boolean fix = false;
-				if (ans.toUpperCase().equals("Y")) {
-					fix = true;
+				//Change String variable ans to answerString
+				String answerString = input("Fix Book? (Y/N) : ");
+				//Change boolean variable fix to fixStatus
+				boolean fixStatus = false;
+				//Change String variable ans to answerString
+				if (answerString.toUpperCase().equals("Y")) {
+					//Change boolean variable fix to fixStatus
+					fixStatus = true;
 				}
-				control.fixBook(fix);
+				//variable control changed into fixBookControl
+				//Change String variable ans to answerString
+				fixBookControl.fixBook(fixStatus);
 				break;
 								
 			case COMPLETED:
@@ -61,17 +86,19 @@ public class FixBookUI {
 			
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("FixBookUI : unhandled state :" + state);			
+				throw new RuntimeException("FixBookUI : unhandled state :" + uiState);			
 			
 			}		
 		}
 		
 	}
 
-	
-	private String input(String prompt) {
+	//Change String parameter prompt to promptString
+	private String input(String promptString) {
+		//Change String argument prompt to promptString
 		System.out.print(prompt);
-		return input.nextLine();
+		//Change Scanner object input into inputScanner
+		return inputScanner.nextLine();
 	}	
 		
 		
