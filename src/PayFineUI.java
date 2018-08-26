@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
-
-public class PayFineUI {
+//Change class name PayFineUI to PayFineUi 
+public class PayFineUi {
 
 	//Change enum UI_STATE to UiState 
 	public static enum UiState { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
@@ -15,7 +15,8 @@ public class PayFineUI {
 	private UiState uiState;
 
 	//Chanege argument conitrol to payFineControl
-	public PayFineUI(PayFineControl payFineControl) {
+	//Change class name PayFineUI to PayFineUi 
+	public PayFineUi(PayFineControl payFineControl) {
 		//Chanege object conitrol to payFineControl
 		this.payFineControl = payFineControl;
 		//Change object input to inputScanner
