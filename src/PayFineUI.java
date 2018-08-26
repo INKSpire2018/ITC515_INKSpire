@@ -46,7 +46,8 @@ public class PayFineUi {
 			
 			case READY:
 				// Change memStr to memberIdString
-				String memberIdString = input("Swipe member card (press <enter> to cancel): ");
+				//Change method name input to getInput
+				String memberIdString = getInput("Swipe member card (press <enter> to cancel): ");
 				// Change memStr to memberIdString
 				if (memberIdString.length() == 0) {
 					//Chanege object conitrol to payFineControl
@@ -67,7 +68,8 @@ public class PayFineUi {
 			case PAYING:
 				double amount = 0;
 				//Change amtStr to amountString
-				String amountString = input("Enter amount (<Enter> cancels) : ");
+				//Change method name input to getInput
+				String amountString = getInput("Enter amount (<Enter> cancels) : ");
 				//Change amtStr to amountString
 				if (amountString.length() == 0) {
 					//Chanege object conitrol to payFineControl
@@ -105,7 +107,8 @@ public class PayFineUi {
 	}
 
 	//Change string prompt to promptString
-	private String input(String promptString) {
+	//Change method name input to getInput
+	private String getInput(String promptString) {
 		//Change string prompt to promptString
 		System.out.print(prompt);
 		//Change object input to inputScanner
