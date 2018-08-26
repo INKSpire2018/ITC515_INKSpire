@@ -65,18 +65,25 @@ public class Loan implements Serializable {
 	}
 	
 	
-	public String toString() {
-
+	public String toString() {		
+		//change variable M to member by Malinga
+		int memberId = member.getId();
+		String memberFirstName = member.getFirstName();
+		String memberLastName = member.getLastName();
+		//change variable B to book by Malinga
+		int bookId = book.ID();
+		String bookTitle = book.Title();
 		//changed the variable name sdf to simpleDateFormat by Malinga
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
+		//no method calls within argument lists of any method calls - by Malinga
 		//changed the variable name sb to stringBuilder by Malinga
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append("Loan:  ").append(id).append("\n")
-		  .append("  Borrower ").append(member.getId()).append(" : ")
-		  .append(member.getLastName()).append(", ").append(M.getFirstName()).append("\n")
-		  .append("  Book ").append(B.ID()).append(" : " )
-		  .append(B.Title()).append("\n")
+		  .append("  Borrower ").append(memberId).append(" : ")
+		  .append(memberLastName).append(", ").append(memberFirstName).append("\n")
+		  .append("  Book ").append(bookId).append(" : " )
+		  .append(bookTitle).append("\n")
 		  .append("  DueDate: ").append(simpleDateFormat.format(D)).append("\n")
 		  .append("  State: ").append(state);		
 		return stringBuilder.toString();
