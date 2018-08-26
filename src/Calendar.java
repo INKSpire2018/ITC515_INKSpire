@@ -42,8 +42,8 @@ public class Calendar
 			//changed the variable name cal to calender by Hashan
 			calender.setTime(date);
 			
-			//changed the variable name cal to calender by Hashan
-	        calender.set(java.util.Calendar.HOUR_OF_DAY, 0);  
+			//changed the variable name cal to calender,HOUR_OF_DAY -> hourOfDay by Hashan
+	        calender.set(java.util.Calendar.hourOfDay, 0);  
 			
 			//changed the variable name cal to calender by Hashan
 	        calender.set(java.util.Calendar.MINUTE, 0);  
@@ -63,8 +63,8 @@ public class Calendar
 	{
 		//try block starts here
 		try {
-			//changed the variable name cal to calender by Hashan
-	        calender.set(java.util.Calendar.HOUR_OF_DAY, 0);  
+			//changed the variable name cal to calender,HOUR_OF_DAY -> hourOfDay  by Hashan
+	        calender.set(java.util.Calendar.hourOfDay, 0);  
 			
 			//changed the variable name cal to calender by Hashan
 	        calender.set(java.util.Calendar.MINUTE, 0);  
