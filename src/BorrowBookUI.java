@@ -8,15 +8,17 @@ public class BorrowBookUI {
 	private BorrowBookControl controlBookBorrow;
 	//meaning full variable --SW
 	private Scanner ScannerInput;
-	private UI_STATE state;
+	//meaning full variable --SW
+	private UiState state;
 
 	
 	public BorrowBookUI(BorrowBookControl control) {
 		this.control = control;
 		ScannerInput = new Scanner(System.in);
 		//meaning full variable --SW
-		bookState = UI_STATE.INITIALISED;
-		control.setUI(this);
+		////correct variable name changed --SW
+		bookState = UiState.INITIALISED;
+		controlBookBorrow.setUI(this);
 	}
 
 	
@@ -73,8 +75,11 @@ public class BorrowBookUI {
 			
 				
 			case SCANNING:
-				String bookStr = input("Scan Book (<enter> completes): ");
-				if (bookStr.length() == 0) {
+			//change variable name  bookStr to bookIdScan
+			//Change method input to getInput
+				String bookIdScan = getinput("Scan Book (<enter> completes): ");
+				//change variable name
+				if (bookIdScan.length() == 0) {
 					control.Complete();
 					break;
 				}
@@ -89,7 +94,8 @@ public class BorrowBookUI {
 					
 				
 			case FINALISING:
-				String ans = input("Commit loans? (Y/N): ");
+			//change string variable name to get input
+				String ans = getinput("Commit loans? (Y/N): ");
 				if (ans.toUpperCase().equals("N")) {
 					control.cancel();
 					
@@ -101,12 +107,14 @@ public class BorrowBookUI {
 				
 				
 			case COMPLETED:
-				output("Borrowing Completed");
+			//Change method output to getoutput
+				getoutput("Borrowing Completed");
 				return;
 	
 				
 			default:
-				output("Unhandled state");
+			//Change method output to getoutput
+				getoutput("Unhandled state");
 				throw new RuntimeException("BorrowBookUI : unhandled state :" + state);			
 			}
 		}		
