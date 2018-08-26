@@ -9,6 +9,7 @@ public class ReturnBookControl
 	private loan currentLoan;
 	
 
+	//public constructor
 	public ReturnBookControl() 
 	{
 		this.library = library.INSTANCE();
